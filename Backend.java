@@ -10,21 +10,25 @@
  */
 
 import java.util.Vector;
+import java.io.FileWriter;
+import java.io.FileReader;
 
-/**
- * Main function
- * @param
- * @return
- */
 class Backend {
 
     /* Attributes */
     private Vector<String> users;
     private Vector<String> transactions;
     private Vector<String> items;
+    private FileWriter fileWriter;
+    private FileReader fileReader;
 
     /* Methods */
+
+    /**
+     * Main Function
+     * @param args
+     */
     public static void main(String[] args) {
-        System.out.println("yeehaw.");
+        
     }
 }
