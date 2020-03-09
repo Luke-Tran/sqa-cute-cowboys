@@ -72,8 +72,9 @@ class Backend {
     }
 
     /**
-     * Adds a new item
-     * @param itemDetails
+     * Adds a new item. This method will add a string to the items vector
+     * to represent adding a new item.
+     * @param itemDetails The transaction code that indicates advertising an item.
      * @return Nothing.
      */
     public static void addNewItem(String itemDetails) {
@@ -84,7 +85,7 @@ class Backend {
      * Updates an item. This method modifies a string in the items vector
      * to represent changing the item's current highest bidder, current highest bid, 
      * and the number of days it has left.
-     * @param itemDetails
+     * @param itemDetails The transaction code that indicates bidding on an item.
      * @return Nothing.
      */
     public static void updateItem(String itemDetails) {
