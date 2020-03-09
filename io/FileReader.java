@@ -10,19 +10,34 @@ package io;
  */
 
 import java.util.Vector;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-class FileReader {
+public class FileReader {
 
     /* Methods */
-    
+
     /**
      * Retrieve all transactions from daily transaction file
      * @param fileName
-     * @return
+     * @return a vector containing all of the transaction lines
      */
     public static Vector<String> getTransactions(String fileName) {
+        Vector<String> data = new Vector<String>();
+        try {
+            File file = new File(fileName);
+            Scanner reader = new Scanner(file);
+            while(reader.hasNext()){
+                data.add(reader.nextLine());
+            }
+            reader.close();
+        }catch(FileNotFoundException e) {
+            System.out.println("An error occured.");
+            e.printStackTrace();
+        }
         System.out.println("Get Transactions method.");
-        return null;
+        return data;
     }
 
     /**
