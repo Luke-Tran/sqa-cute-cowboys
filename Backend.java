@@ -63,7 +63,7 @@ class Backend {
 
     /**
      * Delete a user. This method removes an entry in the users vector
-     * to represent that user being delete. The user that is deleted matches the given userName.
+     * to represent that user being deleted. The user that is deleted matches the given userName.
      * @param userName The username of the user to delete.
      * @return Nothing.
      */
@@ -93,7 +93,7 @@ class Backend {
 
     /**
      * Deletes an item. This method removes an entry in the items vector
-     * to represent that item being delete. The item that is deleted matches the given itemName.
+     * to represent that item being deleted. The item that is deleted matches the given itemName.
      * @param itemName The name of the item to delete.
      * @return Nothing.
      */
