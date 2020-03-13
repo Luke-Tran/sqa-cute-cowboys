@@ -1,7 +1,7 @@
 package io;
 /**
  * FileReader class.
- * Reads input from files
+ * This class deals with reading of files.
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
  * @since March 2nd, 2020
@@ -19,9 +19,10 @@ public class FileReader {
     /* Methods */
 
     /**
-     * Retrieve all data from a file, one line at a time
+     * Retrieve all data from a file, one line at a time.
+     * Store these lines in a vector. 
      * @param fileName
-     * @return a vector containing all of the lines of a file
+     * @return a vector containing all of the lines of a file.
      */
     public static Vector<String> getFileInfo(String fileName) {
         Vector<String> data = new Vector<String>();
