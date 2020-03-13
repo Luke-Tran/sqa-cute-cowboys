@@ -22,43 +22,50 @@ class FileWriter {
     /* Methods */
     /**
      *
-     * @param data
+     * 
      */
 
 
 
      /**
       * Write the changed user and item details to their respective files
-      * @param data
+      * @param userData, itemData
       * @return
       */
-    public static void writeUsersFile(Vector<String> userData, Vector<String> itemData) {
+    public static void writeFiles(Vector<String> userData, Vector<String> itemData) {
+
+      //write user details to the current user file
       try {
             PrintWriter pw = new PrintWriter("current_user_accounts_file.txt");
 
         } catch (FileNotFoundException fnfe){
             System.out.println(fnfe);
         }
-
-
+        for(int i = 0; i < userData.size(); i++){
+          pw.write(userData.get(i));
+        }
+        pw.flush();
         pw.close();
 
 
-
+        //write item details to the available items file
         try {
               PrintWriter pw = new PrintWriter("available_items_file.txt");
 
           } catch (FileNotFoundException fnfe){
               System.out.println(fnfe);
           }
-
+          for(int i = 0; i < itemData.size(); i++){
+            pw.write(itemData.get(i));
+          }
+          pw.flush();
           pw.close();
     }
 
 
     /**
      * Wipe the daily transaction file
-     * @param data
+     * @param
      * @return
      */
     public static void wipeTransactionFile() {
