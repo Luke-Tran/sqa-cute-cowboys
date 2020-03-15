@@ -6,8 +6,8 @@ package backend;
  * Then writes that information to the current users file and available items file.
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
- * @since March 2nd, 2020
- * @version 1.0
+ * @since March 15th, 2020
+ * @version 1.0.1
  * @name Backend.java
  */
 
@@ -72,23 +72,6 @@ public class Backend {
      */
     public Vector<String> getItems() {
         return items;
-    }
-
-    /**
-     * updateTransactions Function. This will loop through the transactions vector
-     * and call the appropriate method based on what kind of transaction it is.
-     * 01 calls addNewUser. 
-     * 02 calls deleteUser and deleteItem.
-     * 06 calls updateUser.
-     * 05 calls updateUser twice. Once for the buyer and once for the seller.
-     * 03 calls addNewItem.
-     * 04 calls updateItem.
-     * @param args Unused.
-     * @return Nothing.
-     */
-    public static void updateTransactions(String[] args) {
-        // setUsers(fileReader.getFileInfo("current_user_accounts_file.txt"));
-        // System.out.println(users);
     }
 
     /**

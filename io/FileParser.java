@@ -1,12 +1,12 @@
 package io;
 /**
- * FileWriter class.
- * Writes output to files.
+ * FileParser class.
+ * Writes output to files and reads input from files
  *
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
- * @since March 2nd, 2020
+ * @since March 15th, 2020
  * @version 1.0
- * @name FileWriter.java
+ * @name FileParser.java
  */
 
 import java.util.Vector;
@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FileParser {
+
+    /* Methods */
 
     /**
     * Write new data to the specified data
