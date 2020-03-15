@@ -16,7 +16,7 @@ import java.util.Vector;
  * @param
  * @return
  */
-class FileWriter {
+public class FileWriter {
 
     /* Methods */
     /**
