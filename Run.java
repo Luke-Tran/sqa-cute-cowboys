@@ -35,11 +35,14 @@ class Run {
         Vector<String> testerVector = new Vector<String>();
         Vector<String> oldFileData = new Vector<String>();
 
+        // Set the users var to all users from the accounts file
         tests.setUsers(parser.getFileInfo("current_user_accounts_file.txt"));
+        // Loop through each result and display it
         for(int i = 0; i < tests.getUsers().size(); i++) {
             System.out.println(tests.getUsers().get(i));
         }
 
+        // Save data to new variable so we dont lose the original data
         oldFileData.addAll(tests.getUsers());
 
 
@@ -47,13 +50,14 @@ class Run {
         System.out.println("\n\nNow writing new information to file and re displaying new content...\n\n");
 
 
-
+        // Add too the vector to display new information
         testerVector.add("========================================");
         testerVector.add("              NEW INFO ADDED            ");
         testerVector.add("========================================");
+        // Write to the current accoutns file the new information we just created
         parser.writeFile("current_user_accounts_file.txt", testerVector);
 
-        
+        // Show the new user accounts file
         tests.setUsers(parser.getFileInfo("current_user_accounts_file.txt"));
         for(int i = 0; i < tests.getUsers().size(); i++) {
             System.out.println(tests.getUsers().get(i));
