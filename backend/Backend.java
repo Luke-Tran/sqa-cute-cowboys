@@ -12,8 +12,6 @@ package backend;
  */
 
 import java.util.Vector;
-import io.FileWriter;
-import io.FileReader;
 
 public class Backend {
 
@@ -21,17 +19,35 @@ public class Backend {
     private Vector<String> users;
     private Vector<String> transactions;
     private Vector<String> items;
-    private FileWriter fileWriter;
-    private FileReader fileReader;
 
     /* Methods */
+
+    /* Setters */
 
     public void setUsers(Vector<String> users) {
         this.users = users;
     }
 
+    public void setTransactions(Vector<String> transactions) {
+        this.transactions = transactions;
+    }
+
+    public void setItems(Vector<String> items) {
+        this.items = items;
+    }
+    
+    /* Getters */
+
     public Vector<String> getUsers() {
         return users;
+    }
+
+    public Vector<String> getTransactions() {
+        return transactions;
+    }
+
+    public Vector<String> getItems() {
+        return items;
     }
 
     /**
