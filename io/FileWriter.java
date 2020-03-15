@@ -17,7 +17,7 @@ import java.io.*;
  * @param
  * @return
  */
-class FileWriter {
+public class FileWriter {
 
     /* Methods */
     /**

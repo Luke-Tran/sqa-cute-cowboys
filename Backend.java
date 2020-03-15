@@ -1,7 +1,8 @@
 /**
  * Backend class.
- * Deals with input from a file and parses data to send out
- * to another file.
+ * Reads a daily transaction file and parses data to modify information 
+ * about current users and available items. 
+ * Then writes that information to the current users file and available items file.
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
  * @since March 2nd, 2020
@@ -10,8 +11,8 @@
  */
 
 import java.util.Vector;
-import java.io.FileWriter;
-import java.io.FileReader;
+import io.FileWriter;
+import io.FileReader;
 
 class Backend {
 
@@ -19,62 +20,83 @@ class Backend {
     private Vector<String> users;
     private Vector<String> transactions;
     private Vector<String> items;
-    private FileWriter fileWriter;
-    private FileReader fileReader;
+    private static FileWriter fileWriter;
+    private static FileReader fileReader;
 
     /* Methods */
 
     /**
-     * Main Function
-     * @param args
+     * Main Function. This will loop through the transactions vector
+     * and call the appropriate method based on what kind of transaction it is.
+     * 01 calls addNewUser. 
+     * 02 calls deleteUser and deleteItem.
+     * 06 calls updateUser.
+     * 05 calls updateUser twice. Once for the buyer and once for the seller.
+     * 03 calls addNewItem.
+     * 04 calls updateItem.
+     * @param args Unused.
+     * @return Nothing.
      */
     public static void main(String[] args) {
-        
+        // fileReader.getFileInfo("current_user_accounts_file.txt");
     }
 
     /**
-     * Add a new user
-     * @param userDetails
+     * Add a new user. This method will add a string to the users vector
+     * to represent adding a new user.
+     * @param userDetails The transaction code that indicates creating a user.
+     * @return Nothing.
      */
     public static void addNewUser(String userDetails) {
 
     }
 
     /**
-     * Update a user
-     * @param userDetails
+     * Update a user. This method modifies a string in the users vector
+     * to represent changing the amount of credit the user has.
+     * @param userDetails The transaction code that indicates adding credit to a user, or refunding a user.
+     * @return Nothing.
      */
     public static void updateUser(String userDetails) {
 
     }
 
     /**
-     * Delete a user
-     * @param userName
+     * Delete a user. This method removes an entry in the users vector
+     * to represent that user being deleted. The user that is deleted matches the given userName.
+     * @param userName The username of the user to delete.
+     * @return Nothing.
      */
     public static void deleteUser(String userName) {
 
     }
 
     /**
-     * Adds a new item
-     * @param itemDetails
+     * Adds a new item. This method will add a string to the items vector
+     * to represent adding a new item.
+     * @param itemDetails The transaction code that indicates advertising an item.
+     * @return Nothing.
      */
     public static void addNewItem(String itemDetails) {
 
     }
 
     /**
-     * Updates an item
-     * @param itemDetails
+     * Updates an item. This method modifies a string in the items vector
+     * to represent changing the item's current highest bidder, current highest bid, 
+     * and the number of days it has left.
+     * @param itemDetails The transaction code that indicates bidding on an item.
+     * @return Nothing.
      */
     public static void updateItem(String itemDetails) {
 
     }
 
     /**
-     * Deletes an item
-     * @param itemName
+     * Deletes an item. This method removes an entry in the items vector
+     * to represent that item being deleted. The item that is deleted matches the given itemName.
+     * @param itemName The name of the item to delete.
+     * @return Nothing.
      */
     public static void deleteItem(String itemName) {
 
