@@ -75,7 +75,7 @@ public class Backend {
     }
 
     /**
-     * Main Function. This will loop through the transactions vector
+     * updateTransactions Function. This will loop through the transactions vector
      * and call the appropriate method based on what kind of transaction it is.
      * 01 calls addNewUser. 
      * 02 calls deleteUser and deleteItem.
@@ -86,7 +86,7 @@ public class Backend {
      * @param args Unused.
      * @return Nothing.
      */
-    public static void main(String[] args) {
+    public static void updateTransactions(String[] args) {
         // setUsers(fileReader.getFileInfo("current_user_accounts_file.txt"));
         // System.out.println(users);
     }
