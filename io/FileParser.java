@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class FileParser {
 
     /**
-     * Write new data to the specified data
+    * Write new data to the specified data
     * @param data
     * @return
     */

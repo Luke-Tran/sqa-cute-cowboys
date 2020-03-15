@@ -18,7 +18,7 @@ class Run {
         }
 
 
-        
+
         System.out.println("\n\nNow writing new information to file and re displaying new content...\n\n");
 
 

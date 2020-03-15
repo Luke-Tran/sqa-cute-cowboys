@@ -24,28 +24,52 @@ public class Backend {
 
     /* Setters */
 
+    /**
+     * Sets user vector
+     * @param users
+     */
     public void setUsers(Vector<String> users) {
         this.users = users;
     }
 
+    /**
+     * Sets transactions vector
+     * @param transactions
+     */
     public void setTransactions(Vector<String> transactions) {
         this.transactions = transactions;
     }
 
+    /**
+     * Sets items vector
+     * @param items
+     */
     public void setItems(Vector<String> items) {
         this.items = items;
     }
     
     /* Getters */
 
+    /**
+     * Gets the users vector
+     * @return a vector with all current user information
+     */
     public Vector<String> getUsers() {
         return users;
     }
 
+    /**
+     * Gets the transactions vector
+     * @return a vector with all current transaction information
+     */
     public Vector<String> getTransactions() {
         return transactions;
     }
 
+    /**
+     * Gets the items vector 
+     * @return a vector with all current item information
+     */
     public Vector<String> getItems() {
         return items;
     }
