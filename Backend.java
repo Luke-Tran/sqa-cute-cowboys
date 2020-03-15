@@ -20,8 +20,8 @@ class Backend {
     private Vector<String> users;
     private Vector<String> transactions;
     private Vector<String> items;
-    private FileWriter fileWriter;
-    private FileReader fileReader;
+    private static FileWriter fileWriter;
+    private static FileReader fileReader;
 
     /* Methods */
 
@@ -38,7 +38,7 @@ class Backend {
      * @return Nothing.
      */
     public static void main(String[] args) {
-        
+        // fileReader.getFileInfo("current_user_accounts_file.txt");
     }
 
     /**
