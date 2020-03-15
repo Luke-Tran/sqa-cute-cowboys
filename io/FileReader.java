@@ -24,7 +24,7 @@ public class FileReader {
      * @param fileName
      * @return a vector containing all of the lines of a file.
      */
-    public static Vector<String> getFileInfo(String fileName) {
+    public Vector<String> getFileInfo(String fileName) {
         Vector<String> data = new Vector<String>();
         try {
             File file = new File(fileName);

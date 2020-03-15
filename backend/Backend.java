@@ -1,3 +1,4 @@
+package backend;
 /**
  * Backend class.
  * Reads a daily transaction file and parses data to modify information 
@@ -14,16 +15,24 @@ import java.util.Vector;
 import io.FileWriter;
 import io.FileReader;
 
-class Backend {
+public class Backend {
 
     /* Attributes */
     private Vector<String> users;
     private Vector<String> transactions;
     private Vector<String> items;
-    private static FileWriter fileWriter;
-    private static FileReader fileReader;
+    private FileWriter fileWriter;
+    private FileReader fileReader;
 
     /* Methods */
+
+    public void setUsers(Vector<String> users) {
+        this.users = users;
+    }
+
+    public Vector<String> getUsers() {
+        return users;
+    }
 
     /**
      * Main Function. This will loop through the transactions vector
@@ -38,7 +47,8 @@ class Backend {
      * @return Nothing.
      */
     public static void main(String[] args) {
-        // fileReader.getFileInfo("current_user_accounts_file.txt");
+        // setUsers(fileReader.getFileInfo("current_user_accounts_file.txt"));
+        // System.out.println(users);
     }
 
     /**

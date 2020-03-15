@@ -12,54 +12,30 @@ package io;
 import java.util.Vector;
 import java.io.*;
 
-/**
- * Main function
- * @param
- * @return
- */
 public class FileWriter {
 
     /* Methods */
-    /**
-     *
-     * 
-     */
-
-
 
      /**
-      * Write the changed user and item details to their respective files
-      * @param userData, itemData
+      * Write new data to the specified data
+      * @param data
       * @return
       */
-    public static void writeFiles(Vector<String> userData, Vector<String> itemData) {
+    public void writeFile(String file, Vector<String> data) {
 
-      //write user details to the current user file
+      //write details to the current file
       try {
-            PrintWriter pw = new PrintWriter("current_user_accounts_file.txt");
+            PrintWriter pw = new PrintWriter(file);
+            
+            for(int i = 0; i < data.size(); i++){
+                pw.write(data.get(i));
+            }
+            pw.flush();
+            pw.close();
 
         } catch (FileNotFoundException fnfe){
             System.out.println(fnfe);
         }
-        for(int i = 0; i < userData.size(); i++){
-          pw.write(userData.get(i));
-        }
-        pw.flush();
-        pw.close();
-
-
-        //write item details to the available items file
-        try {
-              PrintWriter pw = new PrintWriter("available_items_file.txt");
-
-          } catch (FileNotFoundException fnfe){
-              System.out.println(fnfe);
-          }
-          for(int i = 0; i < itemData.size(); i++){
-            pw.write(itemData.get(i));
-          }
-          pw.flush();
-          pw.close();
     }
 
 
