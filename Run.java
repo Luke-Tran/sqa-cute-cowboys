@@ -7,8 +7,8 @@
  * then write back out to the files with new data.
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
- * @since March 15th, 2020
- * @version 1.0
+ * @since March 16th, 2020
+ * @version 1.0.1
  * @name Run.java
  */
 import backend.Backend;
@@ -50,7 +50,26 @@ class Run {
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
-            System.out.println(transCode);
+            switch(transCode) {
+                case Constants.ADD_NEW_USER:
+                    // backend.addNewUser(transactions.get(i));
+                    break;
+                case Constants.DELETE: 
+                    break;
+                case Constants.ADD_NEW_ITEM: 
+                    backend.addNewItem(transactions.get(i));
+                    break;
+                case Constants.BID: 
+                    break;
+                case Constants.REFUND: 
+                    break;
+                case Constants.ADD_CREDIT: 
+                    break;
+                case Constants.END_OF_SESSION: 
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
