@@ -111,7 +111,15 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewItem(String itemDetails) {
+        Vector<String> items = this.getItems(); // Get a vector of all the current items
 
+        items.add(items.size()-1,itemDetails);  // Add to 2nd last index
+                                                // This is to keep the END in the file
+
+        this.setItems(items);                   // Set the instntiated object to this newly added vector
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
     }
 
     /**

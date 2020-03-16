@@ -57,7 +57,7 @@ class Run {
                 case Constants.DELETE: 
                     break;
                 case Constants.ADD_NEW_ITEM: 
-                    backend.addNewItem(transactions.get(i));
+                    backend.addNewItem(transactions.get(i).substring(3));
                     break;
                 case Constants.BID: 
                     break;
