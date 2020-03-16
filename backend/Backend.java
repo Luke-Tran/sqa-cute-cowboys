@@ -130,16 +130,25 @@ public class Backend {
      */
     public void updateItem(String itemDetails) {
         Item item = new Item(itemDetails);
+
         Vector<String> items = this.getItems();
 
         for(int i = 0; i < items.size(); i ++) {
             // If the names are the same
-            if(item.getName() == Item.extractName(items.get(i))) {
+            if(item.getName().equals(Item.extractName(items.get(i)))) {
                 // If the sellers are also the same
                 // Checking for name incase two people sell an item with same name
-                if(item.getSeller() == Item.extractSeller(items.get(i)))
+                if(item.getSeller().equals(Item.extractSeller(items.get(i))))
                 {
-                    
+                    Item newItem = new Item(items.get(i));
+                    // If the value of the passed items price is higher than that of the item in the file
+                    // Check for this incase two people bid the same price in the same session
+                    // First person will have the bid saved
+                    if(Float.valueOf(item.getPrice()).floatValue() > Float.valueOf(newItem.getPrice()).floatValue()) {
+                        newItem.setPrice(item.getPrice());
+                        newItem.setBidder(item.getBidder());
+                        items.set(i, newItem.itemString());
+                    } 
                 }
             }
         }

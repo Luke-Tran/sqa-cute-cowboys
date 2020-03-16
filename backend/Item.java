@@ -16,7 +16,7 @@ import backend.Constants.*;
 public class Item {
 
     public Item(String itemDetails) {
-        if(itemDetails.length() == Constants.TRANS_ITEM_ENTRY_LENGTH) {
+        if(itemDetails.length() == Constants.NEW_ITEM_ENTRY_LENGTH) {
             this.name = itemDetails.substring(0, 25);
             this.seller = itemDetails.substring(26, 41);
             this.bidder = new String(new char[15]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
@@ -28,7 +28,14 @@ public class Item {
             this.bidder = itemDetails.substring(42, 57);
             this.days = itemDetails.substring(58, 61);
             this.price = itemDetails.substring(62, 68);
-        } else {
+        }  else if(itemDetails.length() == Constants.BID_ITEM_ENTRY_LENGTH) {
+            this.name = itemDetails.substring(0, 25);
+            this.seller = itemDetails.substring(26, 41);
+            this.bidder = itemDetails.substring(42, 57);
+            this.days = new String(new char[3]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
+            this.price = itemDetails.substring(58, 64);
+        }
+        else {
             System.out.println("ERROR: Discrepency in item details");
         }
     }
