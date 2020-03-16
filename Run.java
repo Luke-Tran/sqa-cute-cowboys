@@ -60,6 +60,7 @@ class Run {
                     backend.addNewItem(transactions.get(i).substring(3));
                     break;
                 case Constants.BID: 
+                    backend.updateItem(transactions.get(i).substring(3));
                     break;
                 case Constants.REFUND: 
                     break;

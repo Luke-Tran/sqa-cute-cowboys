@@ -118,11 +118,7 @@ public class Backend {
 
         items.add(item.itemString());  // Add new item to the list
 
-        this.setItems(items);                   // Set the instntiated object to this newly added vector
-        // for(int i = 0; i < items.size(); i++) {
-        //     System.out.println(items.get(i));
-        // }
-        // System.out.println("\nDone adding new item\n\n");
+        this.setItems(items);   // Set the instntiated object to this newly added vector
     }
 
     /**
@@ -132,8 +128,21 @@ public class Backend {
      * @param itemDetails The transaction code that indicates bidding on an item.
      * @return Nothing.
      */
-    public static void updateItem(String itemDetails) {
+    public void updateItem(String itemDetails) {
+        Item item = new Item(itemDetails);
+        Vector<String> items = this.getItems();
 
+        for(int i = 0; i < items.size(); i ++) {
+            // If the names are the same
+            if(item.getName() == Item.extractName(items.get(i))) {
+                // If the sellers are also the same
+                // Checking for name incase two people sell an item with same name
+                if(item.getSeller() == Item.extractSeller(items.get(i)))
+                {
+                    
+                }
+            }
+        }
     }
 
     /**
@@ -145,6 +154,4 @@ public class Backend {
     public static void deleteItem(String itemName) {
 
     }
-
-
 }

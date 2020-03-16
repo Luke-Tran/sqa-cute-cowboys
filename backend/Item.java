@@ -1,14 +1,13 @@
 package backend;
 /**
- * Backend class.
- * Reads a daily transaction file and parses data to modify information 
- * about current users and available items. 
- * Then writes that information to the current users file and available items file.
+ * Item class.
+ * Gets and sets information related to an item.
+ * Displays a string of all the item information
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
  * @since March 16th, 2020
- * @version 1.0.2
- * @name Backend.java
+ * @version 1.0.0
+ * @name Item.java
  */
 
 import java.util.Vector;
@@ -89,6 +88,14 @@ public class Item {
 
     public String getPrice() {
         return this.price;
+    }
+
+    public static String extractName(String itemDetails) {
+        return itemDetails.substring(0, 25);
+    }
+
+    public static String extractSeller(String itemDetails) {
+        return itemDetails.substring(26, 41);
     }
 
     /**
