@@ -6,8 +6,8 @@ package backend;
  * Then writes that information to the current users file and available items file.
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
- * @since March 15th, 2020
- * @version 1.0.1
+ * @since March 16th, 2020
+ * @version 1.0.2
  * @name Backend.java
  */
 
@@ -80,7 +80,7 @@ public class Backend {
      * @param userDetails The transaction code that indicates creating a user.
      * @return Nothing.
      */
-    public void addNewUser(String userDetails) {
+    public static void addNewUser(String userDetails) {
 
     }
 
@@ -110,7 +110,7 @@ public class Backend {
      * @param itemDetails The transaction code that indicates advertising an item.
      * @return Nothing.
      */
-    public static void addNewItem(String itemDetails) {
+    public void addNewItem(String itemDetails) {
 
     }
 

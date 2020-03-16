@@ -52,11 +52,12 @@ class Run {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
             switch(transCode) {
                 case Constants.ADD_NEW_USER:
-                    backend.addNewUser(transactions.get(i));
+                    // backend.addNewUser(transactions.get(i));
                     break;
                 case Constants.DELETE: 
                     break;
                 case Constants.ADD_NEW_ITEM: 
+                    backend.addNewItem(transactions.get(i));
                     break;
                 case Constants.BID: 
                     break;
