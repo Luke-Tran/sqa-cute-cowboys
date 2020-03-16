@@ -1,0 +1,4 @@
+03 memerino                  TestUser        017 000017
+00 TestUser        FS 000100.00
+03 memerino 17               TestUser        012 017.33
+00 TestUser        FS 000100.00
