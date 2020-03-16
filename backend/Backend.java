@@ -161,7 +161,7 @@ public class Backend {
      * @return Nothing.
      */
     public void deleteItem(String username) {
-
+        System.out.println("\n\n\nDeleting items for " + username);
         Vector<String> items = this.getItems();
 
         for(int i = 0; i < items.size(); i++) {
