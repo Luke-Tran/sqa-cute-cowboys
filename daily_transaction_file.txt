@@ -1,4 +1,5 @@
-03 memerino                  TestUser        017 000017
+03 Dragon Scimmy             TestUser        013 000099
 00 TestUser        FS 000100.00
-03 memerino 17               TestUser        012 017.33
-00 TestUser        FS 000100.00
+00 ExistingUser    FS 000000.00
+04 apple                     TestUser        IsAdmin         006.00
+00 IsAdmin         AA 999999.00
