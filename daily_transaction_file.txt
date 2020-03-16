@@ -2,16 +2,16 @@
 00 admin1          AA 000150.78
 06 userFS          FS 111211.11
 00 userFS          FS 111211.11
-03 Lenovo Tab M10            userSS          030000190
+03 Lenovo Tab M10            userSS          030 000190.00
 00 userSS          SS 222222.22
-04 item2               userSS          admin1          100.00
+04 item2               userSS          admin1          000100.00
 00 admin1          AA 000150.78
-04 item1               admin1          userFS          200.00
+04 item1               admin1          userFS          000200.00
 00 userFS          FS 111111.11
-04 item 3              userFS          userBS          300.45
+04 item 3              userFS          userBS          000300.45
 00 userBS          BS 123456.78
 00 userSS          SS 222222.22
-04 i t e m 4           userSS          admin1          500.01
+04 i t e m 4           userSS          admin1          000500.01
 00 better admin    AA 987654.32
 02 userBS          BS 123456.78
 00 admin1          AA 000150.78
