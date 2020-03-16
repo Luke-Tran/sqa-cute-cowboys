@@ -12,6 +12,7 @@ package backend;
  */
 
 import java.util.Vector;
+import backend.Item;
 
 public class Backend {
 
@@ -111,15 +112,18 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewItem(String itemDetails) {
+        Item item = new Item(itemDetails);
+
+    
         Vector<String> items = this.getItems(); // Get a vector of all the current items
 
-        items.add(items.size()-1,itemDetails);  // Add to 2nd last index
-                                                // This is to keep the END in the file
+        items.add(itemDetails);  // Add new item to the list
 
         this.setItems(items);                   // Set the instntiated object to this newly added vector
         for(int i = 0; i < items.size(); i++) {
             System.out.println(items.get(i));
         }
+        System.out.println("\nDone adding new item\n\n");
     }
 
     /**

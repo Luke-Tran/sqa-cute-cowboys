@@ -29,4 +29,8 @@ public final class Constants {
         public static final String ADD_CREDIT = "06";
         public static final String END_OF_SESSION = "00";
 
+        /* Items */
+        public static final int ITEM_NAME_LENGTH = 25;
+        public static final int TRANS_ITEM_ENTRY_LENGTH = 52;   // 52 becuase we cut off first 3 characters for trans code
+        public static final int AVAIL_ITEM_ENTRY_LENGTH = 68;
 }
