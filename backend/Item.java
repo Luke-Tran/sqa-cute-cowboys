@@ -20,6 +20,7 @@ public class Item {
         if(itemDetails.length() == Constants.TRANS_ITEM_ENTRY_LENGTH) {
             this.name = itemDetails.substring(0, 25);
             this.seller = itemDetails.substring(26, 41);
+            this.bidder = new String(new char[15]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
             this.days = itemDetails.substring(42, 45);
             this.price = itemDetails.substring(46, 52);
         } else if(itemDetails.length() == Constants.AVAIL_ITEM_ENTRY_LENGTH) {
@@ -88,5 +89,13 @@ public class Item {
 
     public String getPrice() {
         return this.price;
+    }
+
+    /**
+     * Concatenates item information seperated by spaces to be displayed
+     * @return A string of the item details to be placed in the available items file
+     */
+    public String itemString() {
+        return this.getName() + " " + this.getSeller() + " " + this.getBidder() + " " + this.getDays() + " " + this.getPrice();
     }
 }
