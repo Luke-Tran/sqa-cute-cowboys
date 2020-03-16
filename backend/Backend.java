@@ -157,10 +157,28 @@ public class Backend {
     /**
      * Deletes an item. This method removes an entry in the items vector
      * to represent that item being deleted. The item that is deleted matches the given itemName.
-     * @param itemName The name of the item to delete.
+     * @param itemDetails The details of the item to delete.
      * @return Nothing.
      */
-    public static void deleteItem(String itemName) {
+    public void deleteItem(String itemDetails) {
+        Item item = new Item(itemDetails);
 
+        Vector<String> items = this.getItems();
+
+        for(int i = 0; i < items.size(); i ++) {
+            System.out.println("==========================================================");
+            System.out.println(items.get(i));
+            System.out.println("----------------------------------------------------------");
+            // If the names are the same
+            if(item.getName().equals(Item.extractName(items.get(i)))) {
+                // If the sellers are also the same
+                // Checking for name incase two people sell an item with same name
+                if(item.getSeller().equals(Item.extractSeller(items.get(i)))) {
+                    items.remove(i);
+                }
+            }
+            System.out.println(items.get(i));
+            System.out.println("==========================================================");
+        }
     }
 }
