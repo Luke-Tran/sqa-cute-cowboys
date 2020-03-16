@@ -3,3 +3,6 @@
 00 ExistingUser    FS 000000.00
 04 apple                     TestUser        IsAdmin         006.00
 00 IsAdmin         AA 999999.00
+02 OtherName       BS 099999.99
+00 IsAdmin         AA 999999.00
+
