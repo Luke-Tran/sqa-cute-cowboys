@@ -161,19 +161,31 @@ public class Backend {
      * @return Nothing.
      */
     public void deleteItem(String username) {
-        System.out.println("\n\n\nDeleting items for " + username);
+        System.out.println(("=================================================================================="));
+        System.out.println(("                             DELETING ITEMS FOR A USER                            "));
+        System.out.println(("=================================================================================="));
+        System.out.println(("Current items saved"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println("Deleting items for " + username);
+        System.out.println(("---------------------------------------------------------------------------------"));
         Vector<String> items = this.getItems();
 
         for(int i = 0; i < items.size(); i++) {
-            System.out.println("==========================================================");
-            System.out.println(items.get(i));
-            System.out.println("----------------------------------------------------------");
             // If the names are the same
             if(username.equals(Item.extractSeller(items.get(i)))) {
                 System.out.println("Removing " + items.get(i));
                 items.remove(i);
-                i--;
             }
         }
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(("Items saved after deletion"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("=================================================================================="));
     }
 }
