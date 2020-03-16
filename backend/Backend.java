@@ -80,7 +80,7 @@ public class Backend {
      * @param userDetails The transaction code that indicates creating a user.
      * @return Nothing.
      */
-    public static void addNewUser(String userDetails) {
+    public void addNewUser(String userDetails) {
 
     }
 
