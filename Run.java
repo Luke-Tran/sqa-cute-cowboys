@@ -54,7 +54,8 @@ class Run {
                 case Constants.ADD_NEW_USER:
                     // backend.addNewUser(transactions.get(i));
                     break;
-                case Constants.DELETE: 
+                case Constants.DELETE:
+                    backend.deleteItem(transactions.get(i).substring(3, 18));
                     break;
                 case Constants.ADD_NEW_ITEM: 
                     backend.addNewItem(transactions.get(i).substring(3));
