@@ -10,8 +10,6 @@ package backend;
  * @name Item.java
  */
 
-import java.util.Vector;
-import backend.Constants.*;
 
 public class Item {
 

@@ -15,7 +15,6 @@ import backend.Backend;
 import backend.Constants;
 import io.FileParser;
 import java.util.*;
-import static backend.Constants.*;
 
 class Run {
 

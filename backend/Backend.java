@@ -12,7 +12,6 @@ package backend;
  */
 
 import java.util.Vector;
-import backend.Item;
 
 public class Backend {
 
