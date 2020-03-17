@@ -112,11 +112,29 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewItem(String itemDetails) {
+        System.out.println(("=================================================================================="));
+        System.out.println(("                                 ADDING A NEW ITEM                                "));
+        System.out.println(("=================================================================================="));
         Item item = new Item(itemDetails);
-
+        System.out.println(("Current item details to add"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(item.itemString());
+        System.out.println(("---------------------------------------------------------------------------------\n"));
+        System.out.println("Current items saved");
+        System.out.println(("---------------------------------------------------------------------------------"));
         Vector<String> items = this.getItems(); // Get a vector of all the current items
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
 
         items.add(item.itemString());  // Add new item to the list
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println("New item list after saving");
+        System.out.println(("---------------------------------------------------------------------------------"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("==================================================================================\n\n"));
 
         this.setItems(items);   // Set the instntiated object to this newly added vector
     }
@@ -129,7 +147,14 @@ public class Backend {
      * @return Nothing.
      */
     public void updateItem(String itemDetails) {
+        System.out.println(("=================================================================================="));
+        System.out.println(("                                 UPDATING AN ITEM                                 "));
+        System.out.println(("=================================================================================="));
         Item item = new Item(itemDetails);
+        System.out.println(("Current item details to update"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(item.itemString());
+        System.out.println(("---------------------------------------------------------------------------------\n"));
 
         Vector<String> items = this.getItems();
 
@@ -145,13 +170,22 @@ public class Backend {
                     // Check for this incase two people bid the same price in the same session
                     // First person will have the bid saved
                     if(Float.valueOf(item.getPrice()).floatValue() > Float.valueOf(newItem.getPrice()).floatValue()) {
+                        System.out.println("Bid is higher than that saved.. update item.");
+                        System.out.println("\nItem before updating:");
+                        System.out.println(("---------------------------------------------------------------------------------"));
+                        System.out.println(newItem.itemString());
+                        System.out.println(("---------------------------------------------------------------------------------"));
                         newItem.setPrice(item.getPrice());
                         newItem.setBidder(item.getBidder());
                         items.set(i, newItem.itemString());
+                        System.out.println("Item after updating:");
+                        System.out.println(("---------------------------------------------------------------------------------"));
+                        System.out.println(items.get(i));
                     } 
                 }
             }
         }
+        System.out.println(("==================================================================================\n\n"));
     }
 
     /**
@@ -186,6 +220,6 @@ public class Backend {
         for(int i = 0; i < items.size(); i++) {
             System.out.println(items.get(i));
         }
-        System.out.println(("=================================================================================="));
+        System.out.println(("==================================================================================\n\n"));
     }
 }
