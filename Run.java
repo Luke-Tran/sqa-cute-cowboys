@@ -64,7 +64,8 @@ class Run {
                     break;
                 case Constants.REFUND: 
                     break;
-                case Constants.ADD_CREDIT: 
+                case Constants.ADD_CREDIT:
+                    backend.updateUser(transactions.get(i));
                     break;
                 case Constants.END_OF_SESSION: 
                     break;

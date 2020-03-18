@@ -94,7 +94,20 @@ public class Backend {
      * @param userDetails The transaction code that indicates adding credit to a user, or refunding a user.
      * @return Nothing.
      */
-    public static void updateUser(String userDetails) {
+    public void updateUser(String userDetails) {
+        String userToUpdate = userDetails.substring(3, 18);
+        String userType = userDetails.substring(19, 21);
+        String credits = userDetails.substring(22, 31); // Assuming the front end has already calculated the user's new credit.
+        //double creditValue = Double.parseDouble(credits);
+        System.out.println(creditValue);
+        for(int i = 0; i < users.size(); i++) {
+            String username = users.get(i).substring(0, 16);
+            if (username.equals(userToUpdate)) {
+                String updatedUser = username + " " + userType + " " + credits;
+                users.set(i, updatedUser);
+                break;
+            }
+        }
 
     }
 
