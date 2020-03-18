@@ -52,9 +52,9 @@ public class FileParser {
             File file = new File(fileName);
             Scanner reader = new Scanner(file);
             while(reader.hasNext()){
-                String line = reader.nextLine();
-
                 //data.add(reader.nextLine());
+                
+                String line = reader.nextLine();
                 if (!line.substring(0, 3).equals("END")) {
                     data.add(line);
                 }
