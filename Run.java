@@ -50,9 +50,10 @@ class Run {
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
+            //System.out.println(transCode);
             switch(transCode) {
                 case Constants.ADD_NEW_USER:
-                    // backend.addNewUser(transactions.get(i));
+                    backend.addNewUser(transactions.get(i));
                     break;
                 case Constants.DELETE: 
                     break;

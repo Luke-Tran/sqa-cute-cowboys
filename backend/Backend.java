@@ -80,8 +80,12 @@ public class Backend {
      * @param userDetails The transaction code that indicates creating a user.
      * @return Nothing.
      */
-    public static void addNewUser(String userDetails) {
-
+    public void addNewUser(String userDetails) {
+        String username = userDetails.substring(3, 18);
+        String userType = userDetails.substring(19, 21);
+        String credits = userDetails.substring(22, 31);
+        String newUser = username + " " + userType + " " + credits;
+        users.add(newUser);
     }
 
     /**
