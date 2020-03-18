@@ -99,7 +99,6 @@ public class Backend {
         String userType = userDetails.substring(19, 21);
         String credits = userDetails.substring(22, 31); // Assuming the front end has already calculated the user's new credit.
         //double creditValue = Double.parseDouble(credits);
-        System.out.println(creditValue);
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 16);
             if (username.equals(userToUpdate)) {
@@ -117,8 +116,15 @@ public class Backend {
      * @param userName The username of the user to delete.
      * @return Nothing.
      */
-    public static void deleteUser(String userName) {
-
+    public void deleteUser(String transaction) {
+        String userToDelete = transaction.substring(3, 18);
+        for(int i = 0; i < users.size(); i++) {
+            String username = users.get(i).substring(0, 16);
+            if (username.equals(userToDelete)) {
+                users.remove(i);
+                break;
+            }
+        }
     }
 
     /**
