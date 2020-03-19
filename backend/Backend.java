@@ -80,8 +80,29 @@ public class Backend {
      * @param userDetails The transaction code that indicates creating a user.
      * @return Nothing.
      */
-    public static void addNewUser(String userDetails) {
+    public void addNewUser(String userDetails) {
+        /*System.out.println("\nOld");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
 
+        String usertoAdd = userDetails.substring(3, 18);
+        String userType = userDetails.substring(19, 21);
+        String credits = userDetails.substring(22, 31);
+        String newUser = usertoAdd + " " + userType + " " + credits;
+        for(int i = 0; i < users.size(); i++) {
+            String username = users.get(i).substring(0, 15);
+            if (username.equals(usertoAdd)) {
+                System.out.println("User " + usertoAdd + " already exists");
+                return;
+            }
+        }
+        users.add(newUser);
+
+        /*System.out.println("New");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
     }
 
     /**
@@ -90,8 +111,29 @@ public class Backend {
      * @param userDetails The transaction code that indicates adding credit to a user, or refunding a user.
      * @return Nothing.
      */
-    public static void updateUser(String userDetails) {
+    public void updateUser(String userDetails) {
+        /*System.out.println("\nOld");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
 
+        String userToUpdate = userDetails.substring(3, 18);
+        String userType = userDetails.substring(19, 21);
+        String credits = userDetails.substring(22, 31); // Assuming the front end has already calculated the user's new credit.
+        //double creditValue = Double.parseDouble(credits);
+        for(int i = 0; i < users.size(); i++) {
+            String username = users.get(i).substring(0, 15);
+            if (username.equals(userToUpdate)) {
+                String updatedUser = username + " " + userType + " " + credits;
+                users.set(i, updatedUser);
+                break;
+            }
+        }
+
+        /*System.out.println("New");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
     }
 
     /**
@@ -100,8 +142,26 @@ public class Backend {
      * @param userName The username of the user to delete.
      * @return Nothing.
      */
-    public static void deleteUser(String userName) {
+    public void deleteUser(String transaction) {
+        /*System.out.println("\nOld");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
 
+        String userToDelete = transaction.substring(3, 18);
+        for(int i = 0; i < users.size(); i++) {
+            String username = users.get(i).substring(0, 15);
+            if (username.equals(userToDelete)) {
+                System.out.println("Deleted user: " + username);
+                users.remove(i);
+                break;
+            }
+        }
+
+        /*System.out.println("New");
+        for(int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }*/
     }
 
     /**
