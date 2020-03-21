@@ -15,7 +15,6 @@ import backend.Backend;
 import backend.Constants;
 import io.FileParser;
 import java.util.*;
-import static backend.Constants.*;
 
 class Run {
 
@@ -55,13 +54,15 @@ class Run {
                 case Constants.ADD_NEW_USER:
                     backend.addNewUser(transactions.get(i));
                     break;
-                case Constants.DELETE: 
+                case Constants.DELETE:
+                    backend.deleteItem(transactions.get(i).substring(3, 18));
                     backend.deleteUser(transactions.get(i));
                     break;
                 case Constants.ADD_NEW_ITEM: 
-                    backend.addNewItem(transactions.get(i));
+                    backend.addNewItem(transactions.get(i).substring(3));
                     break;
                 case Constants.BID: 
+                    backend.updateItem(transactions.get(i).substring(3));
                     break;
                 case Constants.REFUND: 
                     break;

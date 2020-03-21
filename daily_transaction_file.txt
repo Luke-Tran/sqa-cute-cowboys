@@ -1,19 +1,11 @@
-06 userBS          AA 123556.78
-00 admin1          AA 000150.78
-06 userFS          FS 111211.11
-00 userFS          FS 111211.11
-03 Lenovo Tab M10            userSS          030000190
-00 userSS          SS 222222.22
-04 item2               userSS          admin1          100.00
-00 admin1          AA 000150.78
-04 item1               admin1          userFS          200.00
-00 userFS          FS 111111.11
-04 item 3              userFS          userBS          300.45
-00 userBS          BS 123456.78
-00 userSS          SS 222222.22
-04 i t e m 4           userSS          admin1          500.01
-00 better admin    AA 987654.32
-02 userBS          BS 123456.78
-00 admin1          AA 000150.78
-05 userFS          userSS          012012.34
-
+03 Dragon Scimmy             TestUser        013 000099
+00 TestUser        FS 000100.00
+00 ExistingUser    FS 000000.00
+04 apple                     TestUser        IsAdmin         006.00
+00 IsAdmin         AA 999999.00
+00 IsAdmin         AA 999999.00
+00 IsAdmin         AA 999999.00
+03 monkeys                   UserName        056 000825
+00 UserName        SS 001000.00
+02 UserName        SS 001000.00
+00 IsAdmin         AA 999999.00

@@ -171,7 +171,31 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewItem(String itemDetails) {
+        System.out.println(("=================================================================================="));
+        System.out.println(("                                 ADDING A NEW ITEM                                "));
+        System.out.println(("=================================================================================="));
+        Item item = new Item(itemDetails);
+        System.out.println(("Current item details to add"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(item.itemString());
+        System.out.println(("---------------------------------------------------------------------------------\n"));
+        System.out.println("Current items saved");
+        System.out.println(("---------------------------------------------------------------------------------"));
+        Vector<String> items = this.getItems(); // Get a vector of all the current items
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
 
+        items.add(item.itemString());  // Add new item to the list
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println("New item list after saving");
+        System.out.println(("---------------------------------------------------------------------------------"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("==================================================================================\n\n"));
+
+        this.setItems(items);   // Set the instntiated object to this newly added vector
     }
 
     /**
@@ -181,19 +205,80 @@ public class Backend {
      * @param itemDetails The transaction code that indicates bidding on an item.
      * @return Nothing.
      */
-    public static void updateItem(String itemDetails) {
+    public void updateItem(String itemDetails) {
+        System.out.println(("=================================================================================="));
+        System.out.println(("                                 UPDATING AN ITEM                                 "));
+        System.out.println(("=================================================================================="));
+        Item item = new Item(itemDetails);
+        System.out.println(("Current item details to update"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(item.itemString());
+        System.out.println(("---------------------------------------------------------------------------------\n"));
 
+        Vector<String> items = this.getItems();
+
+        for(int i = 0; i < items.size(); i++) {
+            // If the names are the same
+            if(item.getName().equals(Item.extractName(items.get(i)))) {
+                // If the sellers are also the same
+                // Checking for name incase two people sell an item with same name
+                if(item.getSeller().equals(Item.extractSeller(items.get(i))))
+                {
+                    Item newItem = new Item(items.get(i));
+                    // If the value of the passed items price is higher than that of the item in the file
+                    // Check for this incase two people bid the same price in the same session
+                    // First person will have the bid saved
+                    if(Float.valueOf(item.getPrice()).floatValue() > Float.valueOf(newItem.getPrice()).floatValue()) {
+                        System.out.println("Bid is higher than that saved.. update item.");
+                        System.out.println("\nItem before updating:");
+                        System.out.println(("---------------------------------------------------------------------------------"));
+                        System.out.println(newItem.itemString());
+                        System.out.println(("---------------------------------------------------------------------------------"));
+                        newItem.setPrice(item.getPrice());
+                        newItem.setBidder(item.getBidder());
+                        items.set(i, newItem.itemString());
+                        System.out.println("Item after updating:");
+                        System.out.println(("---------------------------------------------------------------------------------"));
+                        System.out.println(items.get(i));
+                    } 
+                }
+            }
+        }
+        System.out.println(("==================================================================================\n\n"));
     }
 
     /**
      * Deletes an item. This method removes an entry in the items vector
      * to represent that item being deleted. The item that is deleted matches the given itemName.
-     * @param itemName The name of the item to delete.
+     * @param username The username of the user to delete their items.
      * @return Nothing.
      */
-    public static void deleteItem(String itemName) {
+    public void deleteItem(String username) {
+        System.out.println(("=================================================================================="));
+        System.out.println(("                             DELETING ITEMS FOR A USER                            "));
+        System.out.println(("=================================================================================="));
+        System.out.println(("Current items saved"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println("Deleting items for " + username);
+        System.out.println(("---------------------------------------------------------------------------------"));
+        Vector<String> items = this.getItems();
 
+        for(int i = 0; i < items.size(); i++) {
+            // If the names are the same
+            if(username.equals(Item.extractSeller(items.get(i)))) {
+                System.out.println("Removing " + items.get(i));
+                items.remove(i);
+            }
+        }
+        System.out.println(("---------------------------------------------------------------------------------"));
+        System.out.println(("Items saved after deletion"));
+        System.out.println(("---------------------------------------------------------------------------------"));
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println(("==================================================================================\n\n"));
     }
-
-
 }
