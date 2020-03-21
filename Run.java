@@ -49,12 +49,14 @@ class Run {
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
+            //System.out.println(transCode);
             switch(transCode) {
                 case Constants.ADD_NEW_USER:
-                    // backend.addNewUser(transactions.get(i));
+                    backend.addNewUser(transactions.get(i));
                     break;
                 case Constants.DELETE:
                     backend.deleteItem(transactions.get(i).substring(3, 18));
+                    backend.deleteUser(transactions.get(i));
                     break;
                 case Constants.ADD_NEW_ITEM: 
                     backend.addNewItem(transactions.get(i).substring(3));
@@ -64,7 +66,8 @@ class Run {
                     break;
                 case Constants.REFUND: 
                     break;
-                case Constants.ADD_CREDIT: 
+                case Constants.ADD_CREDIT:
+                    backend.updateUser(transactions.get(i));
                     break;
                 case Constants.END_OF_SESSION: 
                     break;
