@@ -13,28 +13,37 @@ package backend;
 
 public class Item {
 
+    /**
+     * Constructor for the Item class
+     * Depending on which transaction is passed (determined by the transcode)
+     * allocate the items information appropriately.
+     * If it came from the Add New Item transaction, then extract different substrings to data
+     * Same for transaciton code Bid
+     * If the code was neither then assume it came from available items file.
+     * @param itemDetails
+     */
     public Item(String itemDetails) {
-        if(itemDetails.length() == Constants.NEW_ITEM_ENTRY_LENGTH) {
-            this.name = itemDetails.substring(0, 25);
-            this.seller = itemDetails.substring(26, 41);
+        // If the Trans code and the length of each record matches then distribute data appropriately 
+        // Check for Trans code AND length because an item in the avail items file can start with "03" or "02"
+        if(itemDetails.substring(0, 2).equals(Constants.ADD_NEW_ITEM) && itemDetails.length() == Constants.NEW_ITEM_ENTRY_LENGTH) {
+            this.name = itemDetails.substring(3, 28);
+            this.seller = itemDetails.substring(29, 44);
             this.bidder = new String(new char[15]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
-            this.days = itemDetails.substring(42, 45);
-            this.price = itemDetails.substring(46, 52);
-        } else if(itemDetails.length() == Constants.AVAIL_ITEM_ENTRY_LENGTH) {
+            this.days = itemDetails.substring(45, 48);
+            this.price = itemDetails.substring(49, 55);
+        }  else if(itemDetails.substring(0, 2).equals(Constants.BID) && itemDetails.length() == Constants.BID_ITEM_ENTRY_LENGTH) {
+            this.name = itemDetails.substring(3, 28);
+            this.seller = itemDetails.substring(29, 44);
+            this.bidder = itemDetails.substring(45, 60);
+            this.days = new String(new char[3]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
+            this.price = itemDetails.substring(61, 67);
+        }
+        else {
             this.name = itemDetails.substring(0, 25);
             this.seller = itemDetails.substring(26, 41);
             this.bidder = itemDetails.substring(42, 57);
             this.days = itemDetails.substring(58, 61);
             this.price = itemDetails.substring(62, 68);
-        }  else if(itemDetails.length() == Constants.BID_ITEM_ENTRY_LENGTH) {
-            this.name = itemDetails.substring(0, 25);
-            this.seller = itemDetails.substring(26, 41);
-            this.bidder = itemDetails.substring(42, 57);
-            this.days = new String(new char[3]).replace('\0', ' ' ); // Fill 15 empty spaces for blank bidder
-            this.price = itemDetails.substring(58, 64);
-        }
-        else {
-            System.out.println("ERROR: Discrepency in item details");
         }
     }
 
@@ -53,56 +62,116 @@ public class Item {
 
     /* Setters*/
 
+    /**
+     * Sets the name for the item
+     * @param the item's name
+     * @return void
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets the seller's name for the item
+     * @param the sellers's name
+     * @return void
+     */
     public void setSaller(String seller) {
         this.seller = seller;
     }
 
+    /**
+     * Sets the bidder's name for the item
+     * @param the bidders's name
+     * @return void
+     */
     public void setBidder(String bidder) {
         this.bidder = bidder;
     }
 
+    /**
+     * Sets the remaining days to auction for the item
+     * @param the item's days
+     * @return void
+     */
     public void setDays(String days) {
         this.days = days;
     }
 
+    /**
+     * Sets the price for the item
+     * @param the item's price
+     * @return void
+     */
     public void setPrice(String price) {
         this.price = price;
     }
 
     /* Getters */
 
+    /**
+     * Get the item's name
+     * @return the item's name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Get the item's seller's name
+     * @return the item's seller's name
+     */
     public String getSeller() {
         return this.seller;
     }
 
+    /**
+     * Get the item's bidder's name
+     * @return the item's bidder's name
+     */
     public String getBidder() {
         return this.bidder;
     }
 
+    /**
+     * Get the item's remaining auction days
+     * @return the item's remaining auction days
+     */
     public String getDays() {
         return this.days;
     }
 
+    /**
+     * Get the item's price
+     * @return the item's price
+     */
     public String getPrice() {
         return this.price;
     }
 
+    /**
+     * Extracts the items name from the item string
+     * @param itemDetails
+     * @return the name of an item
+     */
     public static String extractName(String itemDetails) {
         return itemDetails.substring(0, 25);
     }
 
+    /**
+     * Gets the sellers name from the string of an item
+     * @param itemDetails
+     * @return the item sellers name
+     */
     public static String extractSeller(String itemDetails) {
         return itemDetails.substring(26, 41);
     }
 
+    /**
+     * Checks if the item's auction has come to an end via end date
+     * @return false if days are negative
+     * @return true if days are positive (zero inclusive)
+     */
     public boolean isEndAuctionDate() {
         int days = Integer.parseInt(this.days);
         if((days - 1) < 0) {

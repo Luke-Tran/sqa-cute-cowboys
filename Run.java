@@ -60,10 +60,10 @@ class Run {
                     backend.deleteUser(transactions.get(i));
                     break;
                 case Constants.ADD_NEW_ITEM: 
-                    backend.addNewItem(transactions.get(i).substring(3));
+                    backend.addNewItem(transactions.get(i));
                     break;
                 case Constants.BID: 
-                    backend.updateItem(transactions.get(i).substring(3));
+                    backend.updateItem(transactions.get(i));
                     break;
                 case Constants.REFUND: 
                     break;
@@ -77,28 +77,19 @@ class Run {
             }
         }
 
-        
-        System.out.println("==================================================================");
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i));
-        }
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-
         // Decrement the items days 
         for(int i = 0; i < items.size(); i++) {
             Item item = new Item(items.get(i));
+            // Check if the auction date has come to an end or not
             if(item.isEndAuctionDate()) {
-                item.updateDaysRemaining();
-                items.set(i, item.itemString());
+                item.updateDaysRemaining(); // Update the remaining days left for the item
+                items.set(i, item.itemString());    // Set the current positon to the updated item
             } else {
+                // If the auction date HAS come to an end
+                // Remove the current item
                 items.remove(i);
+                --i;
             }
         }
-
-        
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i));
-        }
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
     }
 }

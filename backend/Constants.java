@@ -31,7 +31,6 @@ public final class Constants {
 
         /* Items */
         public static final int ITEM_NAME_LENGTH = 25;
-        public static final int NEW_ITEM_ENTRY_LENGTH = 52;   // 52 becuase we cut off first 3 characters for trans code
-        public static final int AVAIL_ITEM_ENTRY_LENGTH = 68;
-        public static final int BID_ITEM_ENTRY_LENGTH = 64;
+        public static final int NEW_ITEM_ENTRY_LENGTH = 55;
+        public static final int BID_ITEM_ENTRY_LENGTH = 67;
 }

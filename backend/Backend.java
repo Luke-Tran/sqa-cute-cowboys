@@ -179,7 +179,7 @@ public class Backend {
             System.out.println(items.get(i));
         }
 
-        this.setItems(items);   // Set the instntiated object to this newly added vector
+        this.setItems(items);   // Set the instantiated object to this newly added vector
     }
 
     /**
