@@ -15,6 +15,7 @@ import backend.Backend;
 import backend.Constants;
 import io.FileParser;
 import java.util.*;
+import backend.Item;
 
 class Run {
 
@@ -75,5 +76,29 @@ class Run {
                     break;
             }
         }
+
+        
+        System.out.println("==================================================================");
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+        // Decrement the items days 
+        for(int i = 0; i < items.size(); i++) {
+            Item item = new Item(items.get(i));
+            if(item.isEndAuctionDate()) {
+                item.updateDaysRemaining();
+                items.set(i, item.itemString());
+            } else {
+                items.remove(i);
+            }
+        }
+
+        
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i));
+        }
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
     }
 }

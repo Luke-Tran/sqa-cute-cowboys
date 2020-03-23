@@ -103,6 +103,26 @@ public class Item {
         return itemDetails.substring(26, 41);
     }
 
+    public boolean isEndAuctionDate() {
+        int days = Integer.parseInt(this.days);
+        if((days - 1) < 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Decrements the days remaining of an item.
+     * Formats the new days with leading zeros
+     * @return void
+     */
+    public void updateDaysRemaining() {
+        int days = Integer.parseInt(this.days);
+        --days;
+
+        this.days = String.format("%03d", days);
+    }
+
     /**
      * Concatenates item information seperated by spaces to be displayed
      * @return A string of the item details to be placed in the available items file
