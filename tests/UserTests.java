@@ -54,9 +54,8 @@ public class UserTests {
 		Backend backend = new Backend();
 		backend.setUsers(new Vector<String>());
 		backend.addNewUser("01 a               FS 000000.00");
-		backend.updateUser("06 a               FS 000000.01");
-		assertTrue(backend.getUsers().get(0).equals("a               FS 000000.01")); // Tests if the change has been made. 
-																					  // May have to change this to utilize the User class
+		backend.updateUser("06 a               FS 000000.00");
+		assertTrue(backend.getUsers().get(0).equals("a               FS 000000.00")); // May have to change this to utilize the User class
 	}
 
 	// Tests statement coverage for deleteUser().
