@@ -4,8 +4,8 @@ package backend;
  * Holds useful constants to be used throughout the application
  * 
  * @author Luke Tran, Sean Caldwell, Calvin Lapp
- * @since March 16th, 2020
- * @version 1.0
+ * @since March 26th, 2020
+ * @version 1.0.1
  * @name Constants.java
  */
 public final class Constants {
@@ -33,4 +33,8 @@ public final class Constants {
         public static final int ITEM_NAME_LENGTH = 25;
         public static final int NEW_ITEM_ENTRY_LENGTH = 55;
         public static final int BID_ITEM_ENTRY_LENGTH = 67;
+
+        /* Users */
+        public static final int CURRENT_USER_LENGTH = 28;
+        public static final float MAX_BALANCE = 999999.99f;
 }

@@ -76,7 +76,7 @@ public class Item {
      * @param the sellers's name
      * @return void
      */
-    public void setSaller(String seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
@@ -191,6 +191,7 @@ public class Item {
 
         this.days = String.format("%03d", days);
     }
+
 
     /**
      * Concatenates item information seperated by spaces to be displayed

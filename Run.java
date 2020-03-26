@@ -87,6 +87,7 @@ class Run {
             } else {
                 // If the auction date HAS come to an end
                 // Remove the current item
+                backend.endBid(item);
                 items.remove(i);
                 --i;
             }

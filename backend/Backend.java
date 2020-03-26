@@ -81,15 +81,11 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewUser(String userDetails) {
-        /*System.out.println("\nOld");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
-
         String usertoAdd = userDetails.substring(3, 18);
         String userType = userDetails.substring(19, 21);
         String credits = userDetails.substring(22, 31);
         String newUser = usertoAdd + " " + userType + " " + credits;
+
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
             if (username.equals(usertoAdd)) {
@@ -98,11 +94,6 @@ public class Backend {
             }
         }
         users.add(newUser);
-
-        /*System.out.println("New");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
     }
 
     /**
@@ -112,15 +103,10 @@ public class Backend {
      * @return Nothing.
      */
     public void updateUser(String userDetails) {
-        /*System.out.println("\nOld");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
-
         String userToUpdate = userDetails.substring(3, 18);
         String userType = userDetails.substring(19, 21);
         String credits = userDetails.substring(22, 31); // Assuming the front end has already calculated the user's new credit.
-        //double creditValue = Double.parseDouble(credits);
+        
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
             if (username.equals(userToUpdate)) {
@@ -129,11 +115,6 @@ public class Backend {
                 break;
             }
         }
-
-        /*System.out.println("New");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
     }
 
     /**
@@ -143,12 +124,8 @@ public class Backend {
      * @return Nothing.
      */
     public void deleteUser(String transaction) {
-        /*System.out.println("\nOld");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
-
         String userToDelete = transaction.substring(3, 18);
+
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
             if (username.equals(userToDelete)) {
@@ -157,11 +134,6 @@ public class Backend {
                 break;
             }
         }
-
-        /*System.out.println("New");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }*/
     }
 
     /**
@@ -175,9 +147,6 @@ public class Backend {
         Vector<String> items = this.getItems(); // Get a vector of all the current items
 
         items.add(item.itemString());  // Add new item to the list
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i));
-        }
 
         this.setItems(items);   // Set the instantiated object to this newly added vector
     }
@@ -230,5 +199,49 @@ public class Backend {
                 items.remove(i);
             }
         }
+    }
+
+
+    /**
+     * When the ending of a bid occurs
+     * Add the bid's value to the sellers account and subtract from bidders account
+     * @param item
+     * @return void
+     */
+    public void endBid(Item item) {
+        float itemBid = Float.valueOf(item.getPrice()).floatValue();
+        float balance = 0.0f;
+        Vector<String> users = this.getUsers();
+        String usersName = "";
+
+        // Loop through all current users
+        // Check if the user is the same as the one in the bid 
+        // if they are the same create a new user object to manipulate
+        for(int i = 0; i < users.size(); i++) {
+            usersName = users.get(i).substring(0, 15);
+            if(usersName.equals(item.getSeller())) {
+                User seller = new User(users.get(i));
+                balance = Float.valueOf(seller.getBalance()).floatValue();
+                
+                balance += itemBid;
+                // If the new balance is over the max balance just cut off the remainder
+                if(balance > Constants.MAX_BALANCE) {
+                    balance = Constants.MAX_BALANCE;
+                }
+                seller.setBalance(String.format("%09.2f", balance));    // Formats for 000000.00
+                users.set(i, seller.toString());
+            }
+            if(usersName.equals(item.getBidder())) {
+                User buyer = new User(users.get(i));
+                balance = Float.valueOf(buyer.getBalance()).floatValue();
+
+                balance -= itemBid;
+                buyer.setBalance(String.format("%09.2f", balance));
+                users.set(i, buyer.toString());
+            }
+        }
+
+        // Set the users vector back to the new data
+        this.setUsers(users);
     }
 }
