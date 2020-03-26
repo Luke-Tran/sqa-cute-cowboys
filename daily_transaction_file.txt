@@ -1,3 +1,6 @@
+00 TestUser        FS 000100.00
+01 nuggie king     FS 009000.00
+00 IsAdmin         AA 999999.00
 03 Dragon Scimmy             TestUser        013 000099
 00 TestUser        FS 000100.00
 00 ExistingUser    FS 000000.00

@@ -81,19 +81,16 @@ public class Backend {
      * @return Nothing.
      */
     public void addNewUser(String userDetails) {
-        String usertoAdd = userDetails.substring(3, 18);
-        String userType = userDetails.substring(19, 21);
-        String credits = userDetails.substring(22, 31);
-        String newUser = usertoAdd + " " + userType + " " + credits;
+        User user = new User(userDetails);
 
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
-            if (username.equals(usertoAdd)) {
-                System.out.println("User " + usertoAdd + " already exists");
+            if (username.equals(user.getUsername())) {
+                System.out.println("User " + user.getUsername() + " already exists");
                 return;
             }
         }
-        users.add(newUser);
+        users.add(user.toString());
     }
 
     /**
@@ -103,15 +100,12 @@ public class Backend {
      * @return Nothing.
      */
     public void updateUser(String userDetails) {
-        String userToUpdate = userDetails.substring(3, 18);
-        String userType = userDetails.substring(19, 21);
-        String credits = userDetails.substring(22, 31); // Assuming the front end has already calculated the user's new credit.
+        User user = new User(userDetails);
         
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
-            if (username.equals(userToUpdate)) {
-                String updatedUser = username + " " + userType + " " + credits;
-                users.set(i, updatedUser);
+            if (username.equals(user.getUsername())) {
+                users.set(i, user.toString());
                 break;
             }
         }
@@ -123,13 +117,13 @@ public class Backend {
      * @param userName The username of the user to delete.
      * @return Nothing.
      */
-    public void deleteUser(String transaction) {
-        String userToDelete = transaction.substring(3, 18);
+    public void deleteUser(String userName) {
+        User user = new User(userName);
 
         for(int i = 0; i < users.size(); i++) {
             String username = users.get(i).substring(0, 15);
-            if (username.equals(userToDelete)) {
-                System.out.println("Deleted user: " + username);
+            if (username.equals(user.getUsername())) {
+                System.out.println("Deleted user: " + user.getUsername());
                 users.remove(i);
                 break;
             }
