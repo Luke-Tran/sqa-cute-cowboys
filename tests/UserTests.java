@@ -9,12 +9,14 @@ import java.util.Vector;
 /*
  * Please compile from the root directory of this project.
  * These instructions were written for a Linux machine.
+ * If you are on Linux, you can copy and paste these commands into the terminal to run the tests.
+ * Or, you could use `make` to compile, and `make runtests` to run the tests.
  * To compile the backend:
-   $ javac backend/*.java
+ * 	$ javac backend/*.java
  * To compile this file:
-   $ javac -d tests/output/ -cp .:<path to junit-4.12.jar> tests/UserTests.java
- * To run the test:
-   $ java -cp .:/:tests/output/:<path to hamcrest-core-1.3.jar>:<path to junit-4.12.jar> org.junit.runner.JUnitCore tests.UserTests
+ * 	$ javac -d tests/output/ -cp .:./tests/junit-4.12.jar tests/UserTests.java
+ * To run the tests:
+ * 	$ java -cp .:/:tests/output/:./tests/hamcrest-core-1.3.jar:./tests/junit-4.12.jar org.junit.runner.JUnitCore tests.UserTests
  */
 
 public class UserTests {
