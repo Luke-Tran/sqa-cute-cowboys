@@ -19,6 +19,14 @@ import java.util.Vector;
 
 public class UserTests {
 
+	// Tests setUsers() and getUsers() statement coverage.
+	@Test
+	public void testGetUsers() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		assertTrue(backend.getUsers().size() == 0);
+	}
+
 	// Tests that addNewUser() can add a user.
 	@Test
 	public void usersVectorNotEmptyAfterAdd() {
@@ -36,6 +44,27 @@ public class UserTests {
 		backend.addNewUser("01 a               FS 000000.00");
 		backend.addNewUser("01 a               FS 000000.00");
 		assertTrue(backend.getUsers().size() > 0);
-	}	
+	}
+
+	// Tests statement coverage for updateUser().
+	@Test
+	public void testUpdateUser() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00");
+		backend.updateUser("06 a               FS 000000.01");
+		assertTrue(backend.getUsers().get(0).equals("a               FS 000000.01")); // Tests if the change has been made. 
+																					  // May have to change this to utilize the User class
+	}
+
+	// Tests statement coverage for deleteUser().
+	@Test
+	public void testDeleteUser() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00");
+		backend.deleteUser("02 a               FS 000000.00");
+		assertTrue(backend.getUsers().size() == 0);
+	}
 }
 
