@@ -7,7 +7,8 @@ import org.junit.Ignore;
 import java.util.Vector;
 
 /*
- * Please compile from the root directory.
+ * Please compile from the root directory of this project.
+ * These instructions were written for a Linux machine.
  * To compile the backend:
    $ javac backend/*.java
  * To compile this file:
@@ -17,6 +18,8 @@ import java.util.Vector;
  */
 
 public class UserTests {
+
+	// Tests that addNewUser() can add a user.
 	@Test
 	public void usersVectorNotEmptyAfterAdd() {
 		Backend backend = new Backend();
