@@ -27,4 +27,15 @@ public class UserTests {
 		backend.addNewUser("01 a               FS 000000.00");
 		assertTrue(backend.getUsers().size() > 0);
 	}
+
+	// Tests that addNewUser() does not add a user if they already exist.
+	@Test
+	public void doNotAddDuplicateUser() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00");
+		backend.addNewUser("01 a               FS 000000.00");
+		assertTrue(backend.getUsers().size() > 0);
+	}	
 }
+
