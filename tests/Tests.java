@@ -119,8 +119,7 @@ public class Tests {
 		backend.addNewUser("01 a               FS 999999.99");
 
 		backend.endBid(item);
-		System.out.println(backend.getUsers().get(0).substring(18, 27));
-		assertTrue(backend.getUsers().get(0).substring(18, 27).equals("999999.99"));
+		assertTrue(backend.getUsers().get(0).substring(19, 28).equals("999999.98"));
 	}
 }
 
