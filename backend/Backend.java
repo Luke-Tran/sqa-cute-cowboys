@@ -210,8 +210,8 @@ public class Backend {
         }
 
         
-        float itemBid = Float.valueOf(item.getPrice()).floatValue();
-        float balance = 0.0f;
+        double itemBid = Double.valueOf(item.getPrice());
+        double balance = 0.0;
         Vector<String> users = this.getUsers();
         String usersName = "";
 
@@ -222,7 +222,7 @@ public class Backend {
             usersName = users.get(i).substring(0, 15);
             if(usersName.equals(item.getSeller())) {
                 User seller = new User(users.get(i));
-                balance = Float.valueOf(seller.getBalance()).floatValue();
+                balance = Double.valueOf(seller.getBalance());
                 
                 balance += itemBid;
                 // If the new balance is over the max balance just cut off the remainder
@@ -234,7 +234,7 @@ public class Backend {
             }
             if(usersName.equals(item.getBidder())) {
                 User buyer = new User(users.get(i));
-                balance = Float.valueOf(buyer.getBalance()).floatValue();
+                balance = Double.valueOf(buyer.getBalance());
 
                 balance -= itemBid;
                 buyer.setBalance(String.format("%09.2f", balance));
