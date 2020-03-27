@@ -19,7 +19,7 @@ import java.util.Vector;
  * 	$ java -cp .:/:tests/output/:./lib/hamcrest-core-1.3.jar:./lib/junit-4.12.jar org.junit.runner.JUnitCore tests.UserTests
  */
 
-public class UserTests {
+public class Tests {
 
 	// Tests setUsers() and getUsers() statement coverage.
 	@Test
@@ -35,7 +35,7 @@ public class UserTests {
 		Backend backend = new Backend();
 		backend.setUsers(new Vector<String>());
 		backend.addNewUser("01 a               FS 000000.00");
-		assertTrue(backend.getUsers().size() > 0);
+		assertTrue(backend.getUsers().size() == 1);
 	}
 
 	// Tests that addNewUser() does not add a user if they already exist.
@@ -45,7 +45,7 @@ public class UserTests {
 		backend.setUsers(new Vector<String>());
 		backend.addNewUser("01 a               FS 000000.00");
 		backend.addNewUser("01 a               FS 000000.00");
-		assertTrue(backend.getUsers().size() > 0);
+		assertTrue(backend.getUsers().size() == 1);
 	}
 
 	// Tests statement coverage for updateUser().
@@ -66,6 +66,14 @@ public class UserTests {
 		backend.addNewUser("01 a               FS 000000.00");
 		backend.deleteUser("02 a               FS 000000.00");
 		assertTrue(backend.getUsers().size() == 0);
+	}
+	
+	@Test
+	public void testAddItem() {
+		Backend backend = new Backend();
+		backend.setItems(new Vector<String>());
+		backend.addNewItem("03 a                         a               001 000.00");
+		assertTrue(backend.getItems().size() == 1);
 	}
 }
 
