@@ -84,7 +84,7 @@ public class Tests {
 		Backend backend = new Backend();
 		backend.setItems(new Vector<String>());
 		backend.addNewItem("03 a                         a               001 000.00");
-		backend.updateItem("04 a                         a               a               000.00");
+		backend.updateItem("04 a                         a               a               000.01");
 		assertTrue(backend.getItems().size() == 1);
 	}
 
