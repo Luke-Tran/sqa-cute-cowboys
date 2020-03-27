@@ -83,7 +83,7 @@ class Run {
             // Check if the auction date has come to an end or not
             if(item.isEndAuctionDate()) {
                 item.updateDaysRemaining(); // Update the remaining days left for the item
-                items.set(i, item.itemString());    // Set the current positon to the updated item
+                items.set(i, item.toString());    // Set the current positon to the updated item
             } else {
                 // If the auction date HAS come to an end
                 // Remove the current item
