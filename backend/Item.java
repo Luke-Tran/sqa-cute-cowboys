@@ -150,24 +150,6 @@ public class Item {
     }
 
     /**
-     * Extracts the items name from the item string
-     * @param itemDetails
-     * @return the name of an item
-     */
-    public static String extractName(String itemDetails) {
-        return itemDetails.substring(0, 25);
-    }
-
-    /**
-     * Gets the sellers name from the string of an item
-     * @param itemDetails
-     * @return the item sellers name
-     */
-    public static String extractSeller(String itemDetails) {
-        return itemDetails.substring(26, 41);
-    }
-
-    /**
      * Checks if the item's auction has come to an end via end date
      * @return false if days are negative
      * @return true if days are positive (zero inclusive)

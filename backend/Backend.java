@@ -158,11 +158,12 @@ public class Backend {
         Vector<String> items = this.getItems();
 
         for(int i = 0; i < items.size(); i++) {
+            Item listItem = new Item(items.get(i));
             // If the names are the same
-            if(item.getName().equals(Item.extractName(items.get(i)))) {
+            if(item.getName().equals(listItem.getName())) {
                 // If the sellers are also the same
                 // Checking for name incase two people sell an item with same name
-                if(item.getSeller().equals(Item.extractSeller(items.get(i))))
+                if(item.getSeller().equals(listItem.getSeller()))
                 {
                     Item newItem = new Item(items.get(i));
                     // If the value of the passed items price is higher than that of the item in the file
@@ -188,8 +189,9 @@ public class Backend {
         Vector<String> items = this.getItems();
 
         for(int i = 0; i < items.size(); i++) {
+            Item item = new Item(items.get(i));
             // If the names are the same
-            if(username.equals(Item.extractSeller(items.get(i)))) {
+            if(username.equals(item.getSeller())) {
                 items.remove(i);
             }
         }
