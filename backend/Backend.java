@@ -140,7 +140,7 @@ public class Backend {
         Item item = new Item(itemDetails);
         Vector<String> items = this.getItems(); // Get a vector of all the current items
 
-        items.add(item.itemString());  // Add new item to the list
+        items.add(item.toString());  // Add new item to the list
 
         this.setItems(items);   // Set the instantiated object to this newly added vector
     }
@@ -171,7 +171,7 @@ public class Backend {
                     if(Float.valueOf(item.getPrice()).floatValue() > Float.valueOf(newItem.getPrice()).floatValue()) {
                         newItem.setPrice(item.getPrice());
                         newItem.setBidder(item.getBidder());
-                        items.set(i, newItem.itemString());
+                        items.set(i, newItem.toString());
                     } 
                 }
             }
@@ -203,6 +203,13 @@ public class Backend {
      * @return void
      */
     public void endBid(Item item) {
+        // If there is no bidder attatched to an ending item
+        // Return immediately and don't calculate any prices
+        if(item.getBidder().trim().isEmpty()) {
+            return;
+        }
+
+        
         float itemBid = Float.valueOf(item.getPrice()).floatValue();
         float balance = 0.0f;
         Vector<String> users = this.getUsers();

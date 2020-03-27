@@ -197,7 +197,7 @@ public class Item {
      * Concatenates item information seperated by spaces to be displayed
      * @return A string of the item details to be placed in the available items file
      */
-    public String itemString() {
+    public String toString() {
         return this.getName() + " " + this.getSeller() + " " + this.getBidder() + " " + this.getDays() + " " + this.getPrice();
     }
 }
