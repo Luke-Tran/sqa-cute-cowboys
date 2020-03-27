@@ -38,5 +38,5 @@ public final class Constants {
         public static final int USERNAME_MAX_LENGTH = 15;
         public static final int CURRENT_USER_LENGTH = 28;
         public static final int ADD_UPDATE_USER_LENGTH = 31;
-        public static final float MAX_BALANCE = 999999.99f;
+        public static final double MAX_BALANCE = 999999.99;
 }
