@@ -43,9 +43,7 @@ class Run {
         backend.setTransactions(FileParser.getFileInfo(Constants.DAILY_TRANSACTION_FILE));
         backend.setItems(FileParser.getFileInfo(Constants.AVAILABLE_ITEMS_FILE));
 
-        users = backend.getUsers();
         transactions = backend.getTransactions();
-        items = backend.getItems();
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
@@ -76,6 +74,10 @@ class Run {
             }
         }
 
+        
+        items = backend.getItems();
+        users = backend.getUsers();
+
         // Decrement the items days 
         for(int i = 0; i < items.size(); i++) {
             Item item = new Item(items.get(i));
@@ -91,5 +93,9 @@ class Run {
                 --i;
             }
         }
+
+        // Set the files to the new data
+        FileParser.writeFile(Constants.AVAILABLE_ITEMS_FILE, items);
+        FileParser.writeFile(Constants.CURRENT_USER_ACCOUNTS_FILE, users);
     }
 }
