@@ -226,6 +226,7 @@ public class Backend {
                 }
             }
         }
+        this.setItems(items);
     }
 
     /**
@@ -244,6 +245,8 @@ public class Backend {
                 items.remove(i);
             }
         }
+
+        this.setItems(items);
     }
 
 
