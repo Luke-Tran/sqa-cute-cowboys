@@ -180,5 +180,64 @@ public class Tests {
 		backend.addNewUser("01 g               FS 000000.00");
 		backend.addNewUser("01 h               FS 000000.00");
 	}
+	//test that item constructor correctly takes in a advertise item string
+	@Test
+	public void itemAdvertise() {
+		String s = "03 Dragon Scimmy             TestUser        013 000099";
+		String e = "Dragon Scimmy             TestUser                        013 000099";
+		Item item = new Item(s);
+		assertTrue(item.toString().equals(e));
+	}
+
+	//test that item constructor correctly takes in a bid item string
+
+	@Test
+	public void itemBid() {
+		String s = "04 apple                     TestUser        IsAdmin         006.00";
+		String e = "apple                     TestUser        IsAdmin             006.00";
+		Item item = new Item(s);
+		assertTrue(item.toString().equals(e));
+	}
+
+	//test that item constructor correctly takes in a basic item string
+	@Test
+	public void itemBlank() {
+		String s = "testItem                  testSeller      testBidder      000 001.00";
+		Item item = new Item(s);
+		assertTrue(item.toString().equals(s));
+	}
+
+	//test that isEndAuctionDate returns false if an auction has ended
+	@Test
+	public void auctionDone() {
+		String s = "testItem                 testSeller        testBidder     000 001.00";
+		Item item = new Item(s);
+		assertFalse(item.isEndAuctionDate());
+	}
+
+	//test that isEndAuctionDate returns true if an auction hasnt ended
+	@Test
+	public void auctionNotDone() {
+		String s = "testItem                 testSeller        testBidder     019 001.00";
+		Item item = new Item(s);
+		assertTrue(item.isEndAuctionDate());
+	}
+
+//test that the UpdateDaysRemaining funciton correctly updates the string
+	@Test
+	public void testUpdateDaysRemaining() {
+		String s = "testItem                 testSeller        testBidder     019 001.00";
+		Item item = new Item(s);
+		item.updateDaysRemaining();
+		assertTrue(item.getDays().equals("018"));
+	}
+
+	//test that toString correctly outputs the item details in a string
+	@Test
+	public void testToString() {
+		String s = "toStringItem              testSeller      testBidder      000 001.00";
+		Item item = new Item(s);
+		assertTrue(item.toString().equals(s));
+	}
 }
 
