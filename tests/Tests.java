@@ -4,7 +4,6 @@ import backend.Backend;
 import backend.Item;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import java.util.Vector;
 
 /*
@@ -133,6 +132,33 @@ public class Tests {
 
 		backend.endBid(item);
 		assertTrue(backend.getUsers().get(0).substring(19, 28).equals("999999.98"));
+	}
+
+	// Decision coverage for addNewUser()
+	@Test
+	public void decisionCoverage() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00"); // Does not enter the loop
+		backend.addNewUser("01 a               FS 000000.00"); // If statement is true
+		backend.addNewUser("01 b               FS 000000.00"); // If statement is false
+	}
+
+	// Loop coverage for addNewUser()
+	@Test
+	public void loopCoverage() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00"); // Execute body zero times
+		backend.addNewUser("01 b               FS 000000.00"); // Execute body once
+		backend.addNewUser("01 c               FS 000000.00"); // Execute body twice
+		
+		// Execute body many times
+		backend.addNewUser("01 d               FS 000000.00"); 
+		backend.addNewUser("01 e               FS 000000.00");
+		backend.addNewUser("01 f               FS 000000.00");
+		backend.addNewUser("01 g               FS 000000.00");
+		backend.addNewUser("01 h               FS 000000.00");
 	}
 }
 
