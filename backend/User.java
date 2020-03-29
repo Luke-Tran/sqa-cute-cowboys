@@ -32,7 +32,7 @@ package backend;
             this.accountType = userDetails.substring(19, 21);
             this.balance = userDetails.substring(22, 31);
         } else if(userDetails.length() == Constants.USERNAME_MAX_LENGTH) {
-            this.username = userDetails.substring(3, 18);
+            this.username = userDetails;
             this.accountType = null;
             this.balance = null;
         }
