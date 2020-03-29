@@ -66,20 +66,4 @@ public class FileParser {
         }
         return data;
     }
-
-    
-    /**
-     * Wipe the daily transaction file
-     * @param
-     * @return
-     */
-    public static void wipeTransactionFile() {
-        try {
-              PrintWriter pw = new PrintWriter("daily_transaction_file.txt");
-              pw.close();
-          } catch (FileNotFoundException fnfe){
-              System.out.println(fnfe);
-          }
-  
-      }
 }
