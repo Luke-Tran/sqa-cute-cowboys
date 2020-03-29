@@ -1,4 +1,3 @@
-apple                     TestUser        OtherUser       000 005.00
-test item                 AnotherUser     SomeGuy         100 999.99
-pineapple                 TestUser        OtherUser       017 005.00
-chicken nuggets           TestUser                        000 005.00
+test item                 AnotherUser     SomeGuy         099 999.99
+pineapple                 TestUser        OtherUser       016 005.00
+Dragon Scimmy             TestUser                        012 000099
