@@ -47,11 +47,6 @@ class Run {
         transactions = backend.getTransactions();
         items = backend.getItems();
 
-        for(int i = 0; i < items.size(); i ++) {
-            Item item = new Item(items.get(i));
-            System.out.println(item.getSeller() + ": " + item.getSeller().length());
-        }
-
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
             switch(transCode) {
