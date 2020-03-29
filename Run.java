@@ -58,34 +58,26 @@ class Run {
             switch(transCode) {
                 case Constants.ADD_NEW_USER:
                     backend.addNewUser(transactions.get(i));
-                    System.out.println("add user");
                     break;
                 case Constants.DELETE:
                     backend.deleteItem(transactions.get(i).substring(3, 18));
                     backend.deleteUser(transactions.get(i));
-                    System.out.println("delete");
                     break;
                 case Constants.ADD_NEW_ITEM: 
                     backend.addNewItem(transactions.get(i));
-                    System.out.println("add item");
                     break;
                 case Constants.BID: 
                     backend.updateItem(transactions.get(i));
-                    System.out.println("bid");
                     break;
                 case Constants.REFUND: 
                     backend.refundUser(transactions.get(i));
-                    System.out.println("refund");
                     break;
                 case Constants.ADD_CREDIT:
                     backend.updateUser(transactions.get(i));
-                    System.out.println("add credit");
                     break;
                 case Constants.END_OF_SESSION: 
-                    System.out.println("end session");
                     break;
                 default:
-                    System.out.println("default");
                     break;
             }
         }
@@ -97,14 +89,12 @@ class Run {
             if(item.isEndAuctionDate()) {
                 item.updateDaysRemaining(); // Update the remaining days left for the item
                 items.set(i, item.toString());    // Set the current positon to the updated item
-                System.out.println("end auction");
             } else {
                 // If the auction date HAS come to an end
                 // Remove the current item
                 backend.endBid(item);
                 items.remove(i);
                 --i;
-                System.out.println("else");
             }
         }
     }
