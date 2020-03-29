@@ -2,6 +2,7 @@ package tests;
 
 import backend.Backend;
 import backend.Item;
+import backend.User;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.Vector;
@@ -132,6 +133,25 @@ public class Tests {
 
 		backend.endBid(item);
 		assertTrue(backend.getUsers().get(0).substring(19, 28).equals("999999.98"));
+	}
+
+	// Tests statement coverage for the User constructor.
+	@Test
+	public void testUserConstructor() {
+		User user1 = new User("a               FS 000000.00"); // if given a string from the current user accounts
+		User user2 = new User("01 a               FS 000000.00"); // if given a transaction to create a user
+		User user3 = new User("a              "); // if given just a username
+		assertTrue(user1.getUsername().equals("a              "));
+		assertTrue(user2.getUsername().equals("a              "));
+		assertTrue(user3.getAccountType() == null);
+	}
+
+	// Tests statement coverage for the User toString() function.
+	@Test
+	public void testUserToString() {
+		String userString = "a               FS 000000.00";
+		User user = new User(userString);
+		assertTrue(user.toString().equals(userString));
 	}
 
 	// Decision coverage for addNewUser()
