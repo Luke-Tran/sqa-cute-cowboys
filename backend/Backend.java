@@ -96,7 +96,7 @@ public class Backend {
     /**
      * Update a user. This method modifies a string in the users vector
      * to represent changing the amount of credit the user has.
-     * @param userDetails The transaction code that indicates adding credit to a user, or refunding a user.
+     * @param userDetails The transaction code that indicates adding credit to a user.
      * @return Nothing.
      */
     public void updateUser(String userDetails) {
@@ -111,6 +111,15 @@ public class Backend {
         }
     }
 
+    /**
+     * Refunds a user. This method updates the users vector by 
+     * subtracting money from the specified seller's account 
+     * and adding it to the specified buyer's account, thus refunding the buyer.
+     * If the new money value exceeds the maximum or goes lower than 0,
+     * the value will just be set to the maximum or 0 respectively.
+     * @param transaction The transaction code that indicates refunding a user.
+     * @return Nothing.
+     */
     public void refundUser(String transaction) {
         String buyerName = transaction.substring(3, 18);
         String sellerName = transaction.substring(19, 34);
