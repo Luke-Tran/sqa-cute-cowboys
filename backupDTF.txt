@@ -18,3 +18,4 @@
 02 RUNITE ORE          SOMEDUDE         test123 99
 06 test123         FS 000123.00
 06 test123         FS 000100.00
+05 TestUser        IsAdmin         000050.00

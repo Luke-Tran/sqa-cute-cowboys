@@ -111,6 +111,46 @@ public class Backend {
         }
     }
 
+    public void refundUser(String transaction) {
+        String buyerName = transaction.substring(3, 18);
+        String sellerName = transaction.substring(19, 34);
+        String refundCredit = transaction.substring(35, 44);
+        double refundValue = Double.valueOf(refundCredit);
+
+        String userToRefund = "";
+        String userToDeductFrom = "";
+        int buyerIndex = -1;
+        int sellerIndex = -1;
+        for (int i = 0; i < users.size(); i++) {
+            String user = users.get(i).substring(0, 15);
+            if (buyerName.equals(user)) {
+                userToRefund = users.get(i);
+                buyerIndex = i;
+            }
+            if (sellerName.equals(user)) {
+                userToDeductFrom = users.get(i);
+                sellerIndex = i;
+            }
+        }
+
+        if (!userToRefund.isEmpty() && !userToDeductFrom.isEmpty()) {
+            double buyerCredit = Double.valueOf(userToRefund.substring(19, 27));
+            double sellerCredit = Double.valueOf(userToDeductFrom.substring(19, 27));
+            buyerCredit += refundValue;
+            sellerCredit -= refundValue;
+            if(buyerCredit > Constants.MAX_BALANCE) {
+                buyerCredit = Constants.MAX_BALANCE;
+            }
+            if (sellerCredit < 0) {
+                sellerCredit = 0;
+            }
+            userToRefund = userToRefund.substring(0, 19) + String.format("%09.2f", buyerCredit);
+            userToDeductFrom = userToDeductFrom.substring(0, 19) + String.format("%09.2f", sellerCredit);
+            users.set(buyerIndex, userToRefund);
+            users.set(sellerIndex, userToDeductFrom);
+        }
+    }
+
     /**
      * Delete a user. This method removes an entry in the users vector
      * to represent that user being deleted. The user that is deleted matches the given userName.

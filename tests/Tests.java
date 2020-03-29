@@ -59,13 +59,26 @@ public class Tests {
 		assertTrue(backend.getUsers().get(0).equals("a               FS 000000.00"));
 	}
 
+	// Tests statement coverage for refundUser().
+	@Test
+	public void testRefundUser() {
+		Backend backend = new Backend();
+		backend.setUsers(new Vector<String>());
+		backend.addNewUser("01 a               FS 000000.00");
+		backend.addNewUser("01 b               FS 000000.01");
+		backend.refundUser("05 a               b               000000.01");
+		String buyerCredit = backend.getUsers().get(0).substring(19, 28);
+		String sellerCredit = backend.getUsers().get(1).substring(19, 28);
+		assertTrue(buyerCredit.equals("000000.01") && sellerCredit.equals("000000.00"));
+	}
+
 	// Tests statement coverage for deleteUser().
 	@Test
 	public void testDeleteUser() {
 		Backend backend = new Backend();
 		backend.setUsers(new Vector<String>());
 		backend.addNewUser("01 a               FS 000000.00");
-		backend.deleteUser("02 a               FS 000000.00");
+		backend.deleteUser("06 a               FS 000000.00");
 		assertTrue(backend.getUsers().size() == 0);
 	}
 	

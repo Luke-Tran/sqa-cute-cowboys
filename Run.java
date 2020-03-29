@@ -25,7 +25,7 @@ class Run {
      * 01 calls addNewUser. 
      * 02 calls deleteUser and deleteItem.
      * 06 calls updateUser.
-     * 05 calls updateUser twice. Once for the buyer and once for the seller.
+     * 05 calls refundUser.
      * 03 calls addNewItem.
      * 04 calls updateItem.
      * @param args Unused.
@@ -55,7 +55,6 @@ class Run {
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code
-            //System.out.println(transCode);
             switch(transCode) {
                 case Constants.ADD_NEW_USER:
                     backend.addNewUser(transactions.get(i));
@@ -71,6 +70,7 @@ class Run {
                     backend.updateItem(transactions.get(i));
                     break;
                 case Constants.REFUND: 
+                    backend.refundUser(transactions.get(i));
                     break;
                 case Constants.ADD_CREDIT:
                     backend.updateUser(transactions.get(i));
