@@ -111,6 +111,12 @@ public class Backend {
         }
     }
 
+    public void refundUser(String transaction) {
+        String buyerName = transaction.substring(3, 18);
+        String sellerName = transaction.substring(19, 34);
+        String refundCredit = transaction.substring(35, 44);
+    }
+
     /**
      * Delete a user. This method removes an entry in the users vector
      * to represent that user being deleted. The user that is deleted matches the given userName.

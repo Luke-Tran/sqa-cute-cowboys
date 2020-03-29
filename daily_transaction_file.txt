@@ -12,3 +12,5 @@
 00 UserName        SS 001000.00
 02 UserName        SS 001000.00
 00 IsAdmin         AA 999999.00
+06 test123         FS 000123.00
+05 TestUser        IsAdmin         000050.00
