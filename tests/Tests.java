@@ -279,4 +279,4 @@ public class Tests {
 		Item item = new Item(s);
 		assertTrue(item.toString().equals(s));
 	}
-
+}
