@@ -33,25 +33,19 @@ class Run {
      */
     public static void main(String[] args) {
         Backend backend = new Backend();
-        FileParser parser = new FileParser();
         String transCode = "";
         Vector<String> users = new Vector<String>();
         Vector<String> transactions = new Vector<String>();
         Vector<String> items = new Vector<String>();
 
         // Set the vectors in the backend object
-        backend.setUsers(parser.getFileInfo(Constants.CURRENT_USER_ACCOUNTS_FILE));
-        backend.setTransactions(parser.getFileInfo(Constants.DAILY_TRANSACTION_FILE));
-        backend.setItems(parser.getFileInfo(Constants.AVAILABLE_ITEMS_FILE));
+        backend.setUsers(FileParser.getFileInfo(Constants.CURRENT_USER_ACCOUNTS_FILE));
+        backend.setTransactions(FileParser.getFileInfo(Constants.DAILY_TRANSACTION_FILE));
+        backend.setItems(FileParser.getFileInfo(Constants.AVAILABLE_ITEMS_FILE));
 
         users = backend.getUsers();
         transactions = backend.getTransactions();
         items = backend.getItems();
-
-        for(int i = 0; i < items.size(); i ++) {
-            Item item = new Item(items.get(i));
-            System.out.println(item.getSeller() + ": " + item.getSeller().length());
-        }
 
         for(int i = 0; i < transactions.size(); i++) {
             transCode = transactions.get(i).substring(0, 2);    // get the trans code

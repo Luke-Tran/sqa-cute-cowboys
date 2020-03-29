@@ -18,6 +18,7 @@ public final class Constants {
         public static final String CURRENT_USER_ACCOUNTS_FILE = "current_user_accounts_file.txt";
         public static final String DAILY_TRANSACTION_FILE = "daily_transaction_file.txt";
         public static final String AVAILABLE_ITEMS_FILE = "available_items_file.txt";
+        public static final String TEST_FILE = "test_file.txt";
 
 
         /* Transaction codes */

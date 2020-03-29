@@ -3,8 +3,15 @@ package tests;
 import backend.Backend;
 import backend.Item;
 import backend.User;
+import io.FileParser;
+import backend.Constants;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import java.io.File;
 import java.util.Vector;
 
 /*
@@ -179,7 +186,40 @@ public class Tests {
 		backend.addNewUser("01 f               FS 000000.00");
 		backend.addNewUser("01 g               FS 000000.00");
 		backend.addNewUser("01 h               FS 000000.00");
-	}
+    }
+    
+    /* FileParser.java */
+    
+    // Test statement coverage for writeFile
+    @Test
+    public void testWriteFile() throws FileNotFoundException {
+        Vector<String> data = new Vector<String>();
+        data.add("Doug Dimmadone owner of the Dimmsdale Dimmadome");
+        FileParser.writeFile(Constants.TEST_FILE, data);
+
+        File file = new File(Constants.TEST_FILE);
+        Scanner reader = new Scanner(file);
+        String line = reader.nextLine();
+        reader.close();
+        assertEquals(line, data.get(0));
+    }
+
+    // Statement coverage for getFileInfo
+    @Test 
+    public void testGetFileInfo() throws FileNotFoundException {
+        Vector<String> data = new Vector<String>();
+        PrintWriter pw = new PrintWriter(Constants.TEST_FILE);
+
+        data.add("Doug Dimmadone owner of the Dimmsdale Dimmadome");
+        pw.println(data.get(0));
+        pw.flush();
+        pw.close();
+
+        Vector<String> returnedData = FileParser.getFileInfo(Constants.TEST_FILE);
+        assertEquals(returnedData.get(0), data.get(0));
+        
+    }
+  
 	//test that item constructor correctly takes in a advertise item string
 	@Test
 	public void itemAdvertise() {
@@ -240,4 +280,3 @@ public class Tests {
 		assertTrue(item.toString().equals(s));
 	}
 }
-

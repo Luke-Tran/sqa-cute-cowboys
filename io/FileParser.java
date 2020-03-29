@@ -17,6 +17,10 @@ import java.util.Scanner;
 
 public class FileParser {
 
+    private FileParser() {
+        // don't allow instantiation 
+    }
+
     /* Methods */
 
     /**
@@ -24,7 +28,7 @@ public class FileParser {
     * @param data
     * @return
     */
-    public void writeFile(String file, Vector<String> data) {
+    public static void writeFile(String file, Vector<String> data) {
 
         //write details to the current file
         try {
@@ -46,13 +50,12 @@ public class FileParser {
      * @param fileName
      * @return a vector containing all of the lines of a file.
      */
-    public Vector<String> getFileInfo(String fileName) {
+    public static Vector<String> getFileInfo(String fileName) {
         Vector<String> data = new Vector<String>();
         try {
             File file = new File(fileName);
             Scanner reader = new Scanner(file);
             while(reader.hasNext()){
-                //data.add(reader.nextLine());
                 
                 String line = reader.nextLine();
                 if (!line.substring(0, 3).equals("END")) {
@@ -66,20 +69,4 @@ public class FileParser {
         }
         return data;
     }
-
-    
-    /**
-     * Wipe the daily transaction file
-     * @param
-     * @return
-     */
-    public static void wipeTransactionFile() {
-        try {
-              PrintWriter pw = new PrintWriter("daily_transaction_file.txt");
-              pw.close();
-          } catch (FileNotFoundException fnfe){
-              System.out.println(fnfe);
-          }
-  
-      }
 }
