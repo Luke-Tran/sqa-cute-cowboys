@@ -3,6 +3,7 @@ package tests;
 import backend.Backend;
 import backend.Item;
 import backend.User;
+import io.FileParser;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.Vector;
@@ -179,6 +180,15 @@ public class Tests {
 		backend.addNewUser("01 f               FS 000000.00");
 		backend.addNewUser("01 g               FS 000000.00");
 		backend.addNewUser("01 h               FS 000000.00");
-	}
+    }
+    
+    /* FileParser.java */
+    
+    // 
+    @Test
+    public void testWriteFile() {
+        
+
+    }
 }
 

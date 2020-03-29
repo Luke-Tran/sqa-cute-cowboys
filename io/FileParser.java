@@ -24,7 +24,7 @@ public class FileParser {
     * @param data
     * @return
     */
-    public void writeFile(String file, Vector<String> data) {
+    public static void writeFile(String file, Vector<String> data) {
 
         //write details to the current file
         try {
@@ -46,7 +46,7 @@ public class FileParser {
      * @param fileName
      * @return a vector containing all of the lines of a file.
      */
-    public Vector<String> getFileInfo(String fileName) {
+    public static Vector<String> getFileInfo(String fileName) {
         Vector<String> data = new Vector<String>();
         try {
             File file = new File(fileName);
