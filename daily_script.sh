@@ -18,6 +18,16 @@ process_input_file() {
 	i=$((i+1))
 }
 
+# Remove previous transaction files
+for file in $output/*
+do
+	extension=`echo "$file" | cut -d '.' -f2`
+	if [ "$extension" == "of" ]
+	then
+		rm "$file"
+	fi
+done
+
 for transaction in $inputs
 do
 	# If its a directory, move into it
@@ -45,6 +55,7 @@ do
     fi
 done
 
+# Merge the transaction files
 for file in $output/*
 do
 	extension=`echo "$file" | cut -d '.' -f2`
