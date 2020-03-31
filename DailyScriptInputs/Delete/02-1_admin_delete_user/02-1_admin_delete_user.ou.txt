@@ -1,8 +1,0 @@
-Please enter "login" to start: 
-Username: 
-Password: 
-Welcome IsAdmin
-Enter user to delete: 
-user successfully deleted!
-Logout Successful!
-Please enter "login" to start: 
