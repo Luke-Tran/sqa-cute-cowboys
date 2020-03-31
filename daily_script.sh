@@ -1,29 +1,21 @@
 #!/bin/bash
 
 inputs="DailyScriptInputs/*"
+output="DailyScriptOutput"
+datetime=`date +"%Y-%m-%d_%Hh%Mm%Ss"`
+i=0
 
 process_input_file() {
-	# $1 is the input file name given as the 1st argument. 
-	# These variables extract parts of the input file path to create the output file.
-	# They are local so they do not affect outside their scope.
-	#local transaction=`echo "$1" | cut -d '/' -f2` 
-	#local test_name=`echo "$1" | cut -d '/' -f3`
-	#local output_dir="outputs/$transaction/$test_name"
-	#local output_file="$output_dir/$test_name.ou.txt"
-	#local expected_transactions="tests/$transaction/$test_name/$test_name.of.txt"
+	# Make sure the output directory exists
+	mkdir -p "$output"
 
-	# Make sure the test output file exists
-	#mkdir -p "$output_dir"
-	#touch "$output_file"
-    #touch "$output_dir/$test_name.of.txt"
-    echo "$1"
-
-	# For each line in the input file, feed it as user inputs into the program,
-	# then output the results in an appropriately named output file.
+	# For each line in the input file, feed it as user inputs into the program
 	(while IFS= read -r line; do
      echo "$line"
-	 done < "$1") | frontend/auction current_user_accounts_file.txt available_items_file.txt #> "$output_file"
-	#echo "$1"
+	 done < "$1") | frontend/auction current_user_accounts_file.txt available_items_file.txt
+
+	(cat daily_transaction_file.of.txt) > "$output/daily_transaction_file$i.of.txt"
+	i=$((i+1))
 }
 
 for transaction in $inputs
@@ -51,4 +43,13 @@ do
    		 	fi
         done
     fi
+done
+
+for file in $output/*
+do
+	extension=`echo "$file" | cut -d '.' -f2`
+	if [ "$extension" == "of" ]
+	then
+		(cat "$file") >> "$output/merged_transactions_$datetime.txt"
+	fi
 done

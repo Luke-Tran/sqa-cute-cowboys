@@ -27,3 +27,4 @@ current_user_accounts_file.txt
 daily_transaction_file.txt
 *auction
 *.of.txt
+*merged_transactions*
