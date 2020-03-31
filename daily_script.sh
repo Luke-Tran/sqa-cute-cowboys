@@ -14,6 +14,7 @@ process_input_file() {
      echo "$line"
 	 done < "$1") | frontend/auction current_user_accounts_file.txt available_items_file.txt
 
+	# Make a copy of the daily transaction file in the output directory
 	(cat daily_transaction_file.of.txt) > "$output/daily_transaction_file$i.of.txt"
 	i=$((i+1))
 }
