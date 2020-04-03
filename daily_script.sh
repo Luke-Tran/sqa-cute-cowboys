@@ -1,4 +1,11 @@
 #!/bin/bash
+# This script simulates running the auction system program for multiple sessions,
+# generating a new transaction file for each session and then merging them.
+# The backend is then run on the merged daily transaction file.
+# It assumes both the frontend and backend have been compiled.
+# The program can be compiled from the same directory by doing
+# $ ./compile_frontend.sh
+# $ make
 
 inputs="DailyScriptInputs/*"
 output="DailyScriptOutput"
@@ -12,7 +19,7 @@ process_input_file() {
 	# For each line in the input file, feed it as user inputs into the program
 	(while IFS= read -r line; do
      echo "$line"
-	 done < "$1") | frontend/auction current_user_accounts_file.txt available_items_file.txt
+	 done < "$1") | frontend/auction "current_user_accounts_file.txt" "available_items_file.txt"
 
 	# Make a copy of the daily transaction file in the output directory
 	(cat daily_transaction_file.of.txt) > "$output/daily_transaction_file$i.of.txt"
@@ -65,3 +72,6 @@ do
 		(cat "$file") >> "$output/merged_transactions_$datetime.txt"
 	fi
 done
+
+(cat "$output/merged_transactions_$datetime.txt") > "daily_transaction_file.txt"
+java Run

@@ -521,20 +521,18 @@ bool MainWindow::bid() {
     std::cout << "Please enter the item you'd like to bid on: " << std::endl;
     getline(std::cin, bidItemInput);
 
-    
-
+    bool itemExists = false;
     for (int i = 0; i < items.size(); ++i) {
-        if (items[i].getName() != bidItemInput) {
-            std::cout << "Sorry, no one is selling items named \"" << bidItemInput << "\". Please try a different item name. " << std::endl;
-
-            return false;
-        }
-        else {
+        if (items[i].getName() == bidItemInput) {
             currentItem = items[i];
+            itemExists = true;
             break;
         }
     }
-
+    if (!itemExists) {
+        std::cout << "Sorry, no one is selling items named \"" << bidItemInput << "\". Please try a different item name. " << std::endl;
+        return false;
+    }
 
     std::string itemSellerInput;
     std::cout << "Please enter the seller's username: " << std::endl;
