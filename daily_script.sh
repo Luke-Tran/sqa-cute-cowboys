@@ -2,10 +2,15 @@
 # This script simulates running the auction system program for multiple sessions,
 # generating a new transaction file for each session and then merging them.
 # The backend is then run on the merged daily transaction file.
+#
 # It assumes both the frontend and backend have been compiled.
 # The program can be compiled from the same directory by doing
 # $ ./compile_frontend.sh
 # $ make
+#
+# The program assumes there is a correctly formated users file and items file,
+# respectively called current_user_accounts_file.txt and available_items_file.txt.
+# The contents of these files can be copied from backup_users_file.txt and backup_items_file.txt
 
 inputs="DailyScriptInputs/*"
 output="DailyScriptOutput"
