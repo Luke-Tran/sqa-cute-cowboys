@@ -4,15 +4,19 @@
 # The backend is then run on the merged daily transaction file.
 #
 # It assumes both the frontend and backend have been compiled.
-# The program can be compiled from the same directory by doing
-# $ ./compile_frontend.sh
-# $ make
+# The program can be compiled from the same directory by running
+# $ ./compile_all.sh
 #
 # The program assumes there is a correctly formated users file and items file,
 # respectively called current_user_accounts_file.txt and available_items_file.txt.
-# The contents of these files can be copied from backup_users_file.txt and backup_items_file.txt
+# The contents of these files are copied from backup_users_file.txt and backup_items_file.txt
 
-inputs="DailyScriptInputs/*"
+if [ "$#" -ne 1 ]; then
+	echo "Need 1 argument for which day to run"
+	exit 1
+fi
+
+inputs="DailyScriptInputs/$1/*"
 output="DailyScriptOutput"
 datetime=`date +"%Y-%m-%d_%Hh%Mm%Ss"`
 i=0
